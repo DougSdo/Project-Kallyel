@@ -1,0 +1,173 @@
+{
+  "seed": 7,
+  "start": "2024-01-01T00:00:00+00:00",
+  "files": {
+    "access.log": 20101,
+    "auth.log": 2091,
+    "laravel.log": 632
+  },
+  "scenarios": [
+    {
+      "name": "scanner_sweep",
+      "description": "Varredura de scanner (Nikto) com lista de caminhos e arquivos sensíveis, 1 requisição/s",
+      "ip": "203.0.113.201",
+      "expected": [
+        [
+          "KALLYEL-WEB-004",
+          "203.0.113.201"
+        ],
+        [
+          "KALLYEL-WEB-005",
+          "203.0.113.201"
+        ],
+        [
+          "KALLYEL-WEB-007",
+          "203.0.113.201"
+        ]
+      ]
+    },
+    {
+      "name": "sqli",
+      "description": "Injeção de SQL com User-Agent de navegador; a aplicação responde 500 em 12 das 14 tentativas",
+      "ip": "203.0.113.202",
+      "expected": [
+        [
+          "KALLYEL-WEB-001",
+          "203.0.113.202"
+        ],
+        [
+          "KALLYEL-WEB-009",
+          "203.0.113.202"
+        ]
+      ]
+    },
+    {
+      "name": "ssh_bruteforce_success",
+      "description": "Força bruta de SSH (12 falhas em 48 s), login com sucesso, sudo bash e criação de usuário",
+      "ip": "203.0.113.203",
+      "expected": [
+        [
+          "KALLYEL-AUTH-001",
+          "203.0.113.203"
+        ],
+        [
+          "KALLYEL-AUTH-002",
+          "203.0.113.203"
+        ],
+        [
+          "KALLYEL-AUTH-003",
+          null
+        ]
+      ]
+    },
+    {
+      "name": "login_spray",
+      "description": "Tentativas repetidas de login web (25 respostas 401 em 48 s)",
+      "ip": "203.0.113.204",
+      "expected": [
+        [
+          "KALLYEL-WEB-008",
+          "203.0.113.204"
+        ]
+      ]
+    },
+    {
+      "name": "xss",
+      "description": "XSS refletido (3 requisições)",
+      "ip": "203.0.113.205",
+      "expected": [
+        [
+          "KALLYEL-WEB-002",
+          "203.0.113.205"
+        ]
+      ]
+    },
+    {
+      "name": "traversal",
+      "description": "Path traversal e LFI (3 requisições)",
+      "ip": "203.0.113.206",
+      "expected": [
+        [
+          "KALLYEL-WEB-003",
+          "203.0.113.206"
+        ]
+      ]
+    },
+    {
+      "name": "rce",
+      "description": "Injeção de comando e expressão log4shell (3 requisições)",
+      "ip": "203.0.113.207",
+      "expected": [
+        [
+          "KALLYEL-WEB-006",
+          "203.0.113.207"
+        ]
+      ]
+    },
+    {
+      "name": "laravel_leak",
+      "description": "Erro do Laravel que registra a senha do banco (valor inventado) em um stack trace",
+      "ip": null,
+      "expected": [
+        [
+          "KALLYEL-APP-001",
+          null
+        ]
+      ]
+    }
+  ],
+  "expected": [
+    [
+      "KALLYEL-APP-001",
+      ""
+    ],
+    [
+      "KALLYEL-AUTH-001",
+      "203.0.113.203"
+    ],
+    [
+      "KALLYEL-AUTH-002",
+      "203.0.113.203"
+    ],
+    [
+      "KALLYEL-AUTH-003",
+      ""
+    ],
+    [
+      "KALLYEL-WEB-001",
+      "203.0.113.202"
+    ],
+    [
+      "KALLYEL-WEB-002",
+      "203.0.113.205"
+    ],
+    [
+      "KALLYEL-WEB-003",
+      "203.0.113.206"
+    ],
+    [
+      "KALLYEL-WEB-004",
+      "203.0.113.201"
+    ],
+    [
+      "KALLYEL-WEB-005",
+      "203.0.113.201"
+    ],
+    [
+      "KALLYEL-WEB-006",
+      "203.0.113.207"
+    ],
+    [
+      "KALLYEL-WEB-007",
+      "203.0.113.201"
+    ],
+    [
+      "KALLYEL-WEB-008",
+      "203.0.113.204"
+    ],
+    [
+      "KALLYEL-WEB-009",
+      "203.0.113.202"
+    ]
+  ]
+}

