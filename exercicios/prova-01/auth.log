@@ -1,0 +1,555 @@
+2024-01-01T00:00:31+00:00 srv sshd[1001]: Accepted publickey for maria from 192.0.2.146 port 34706 ssh2: ED25519 SHA256:abc1001
+2024-01-01T00:00:34+00:00 srv sudo[1002]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:00:35+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:00:40+00:00 srv sshd[1004]: Accepted publickey for maria from 198.51.100.220 port 45198 ssh2: ED25519 SHA256:abc1004
+2024-01-01T00:00:41+00:00 srv sudo[1005]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:01:35+00:00 srv CRON[1006]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:01:42+00:00 srv sshd[1007]: Accepted publickey for ana from 198.51.100.131 port 34950 ssh2: ED25519 SHA256:abc1007
+2024-01-01T00:01:45+00:00 srv sudo[1008]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:02:10+00:00 srv sudo[1009]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:02:19+00:00 srv sudo[1010]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:02:20+00:00 srv sshd[1011]: Accepted publickey for deploy from 192.0.2.116 port 49065 ssh2: ED25519 SHA256:abc1011
+2024-01-01T00:02:24+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:02:29+00:00 srv sshd[1013]: Failed password for backup from 192.0.2.236 port 43584 ssh2
+2024-01-01T00:02:32+00:00 srv sshd[1013]: Accepted password for backup from 192.0.2.236 port 48954 ssh2
+2024-01-01T00:02:39+00:00 srv sshd[1014]: Failed password for joao from 203.0.113.61 port 26228 ssh2
+2024-01-01T00:02:42+00:00 srv sshd[1014]: Accepted password for joao from 203.0.113.61 port 41636 ssh2
+2024-01-01T00:02:46+00:00 srv CRON[1015]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:02:49+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:03:20+00:00 srv sshd[1017]: Failed password for maria from 198.51.100.116 port 25553 ssh2
+2024-01-01T00:03:23+00:00 srv sshd[1017]: Accepted password for maria from 198.51.100.116 port 39405 ssh2
+2024-01-01T00:03:27+00:00 srv sshd[1018]: Accepted publickey for backup from 192.0.2.155 port 57449 ssh2: ED25519 SHA256:abc1018
+2024-01-01T00:03:40+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:03:41+00:00 srv sudo[1020]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:04:13+00:00 srv sshd[1021]: Accepted publickey for ana from 198.51.100.94 port 27908 ssh2: ED25519 SHA256:abc1021
+2024-01-01T00:04:35+00:00 srv CRON[1022]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:04:41+00:00 srv CRON[1023]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:04:44+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:04:51+00:00 srv CRON[1025]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:05:02+00:00 srv sshd[1026]: Accepted publickey for backup from 192.0.2.218 port 29690 ssh2: ED25519 SHA256:abc1026
+2024-01-01T00:05:08+00:00 srv sshd[1027]: Accepted publickey for backup from 203.0.113.80 port 22653 ssh2: ED25519 SHA256:abc1027
+2024-01-01T00:05:09+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:05:24+00:00 srv sudo[1029]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:05:33+00:00 srv sudo[1030]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:05:38+00:00 srv CRON[1031]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:05:41+00:00 srv sshd[1032]: Accepted publickey for ana from 203.0.113.171 port 51310 ssh2: ED25519 SHA256:abc1032
+2024-01-01T00:05:57+00:00 srv sshd[1033]: Accepted publickey for ana from 192.0.2.136 port 56134 ssh2: ED25519 SHA256:abc1033
+2024-01-01T00:06:09+00:00 srv sudo[1034]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:06:09+00:00 srv sudo[1035]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:06:15+00:00 srv sudo[1036]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:06:23+00:00 srv CRON[1037]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:06:42+00:00 srv CRON[1038]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:06:54+00:00 srv sshd[1039]: Accepted publickey for joao from 198.51.100.119 port 25171 ssh2: ED25519 SHA256:abc1039
+2024-01-01T00:07:08+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:07:08+00:00 srv sudo[1041]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:07:13+00:00 srv sudo[1042]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:07:44+00:00 srv sudo[1043]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:07:53+00:00 srv CRON[1044]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:08:09+00:00 srv sudo[1045]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:08:15+00:00 srv sudo[1046]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:08:15+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:08:42+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:08:44+00:00 srv CRON[1049]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:08:45+00:00 srv CRON[1050]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:08:47+00:00 srv sshd[1051]: Accepted publickey for joao from 198.51.100.39 port 23758 ssh2: ED25519 SHA256:abc1051
+2024-01-01T00:08:56+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:09:00+00:00 srv sshd[1053]: Accepted publickey for deploy from 203.0.113.156 port 54522 ssh2: ED25519 SHA256:abc1053
+2024-01-01T00:09:00+00:00 srv sudo[1054]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:09:06+00:00 srv sudo[1055]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:09:09+00:00 srv sshd[1056]: Accepted publickey for ana from 192.0.2.195 port 50497 ssh2: ED25519 SHA256:abc1056
+2024-01-01T00:09:38+00:00 srv CRON[1057]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:09:43+00:00 srv CRON[1058]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:09:48+00:00 srv sshd[1059]: Accepted publickey for ana from 198.51.100.126 port 32321 ssh2: ED25519 SHA256:abc1059
+2024-01-01T00:09:51+00:00 srv sudo[1060]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:10:02+00:00 srv CRON[1061]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:10:17+00:00 srv sudo[1062]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:10:20+00:00 srv CRON[1063]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:10:22+00:00 srv sudo[1064]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:10:24+00:00 srv sudo[1065]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:10:32+00:00 srv CRON[1066]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:10:36+00:00 srv sudo[1067]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:10:53+00:00 srv sshd[1068]: Accepted publickey for backup from 192.0.2.35 port 49231 ssh2: ED25519 SHA256:abc1068
+2024-01-01T00:11:01+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:11:05+00:00 srv CRON[1070]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:11:07+00:00 srv sshd[1071]: Accepted publickey for joao from 198.51.100.64 port 55668 ssh2: ED25519 SHA256:abc1071
+2024-01-01T00:11:08+00:00 srv sshd[1072]: Accepted publickey for backup from 203.0.113.69 port 45560 ssh2: ED25519 SHA256:abc1072
+2024-01-01T00:11:14+00:00 srv CRON[1073]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:11:37+00:00 srv CRON[1074]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:11:43+00:00 srv sudo[1075]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:11:58+00:00 srv sudo[1076]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:12:17+00:00 srv sshd[1077]: Accepted publickey for deploy from 198.51.100.74 port 20080 ssh2: ED25519 SHA256:abc1077
+2024-01-01T00:12:19+00:00 srv sudo[1078]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:12:36+00:00 srv CRON[1079]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:12:39+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:12:58+00:00 srv CRON[1081]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:13:00+00:00 srv CRON[1082]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:13:04+00:00 srv sudo[1083]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:13:09+00:00 srv sshd[1084]: Accepted publickey for maria from 203.0.113.168 port 37064 ssh2: ED25519 SHA256:abc1084
+2024-01-01T00:13:14+00:00 srv sudo[1085]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:13:21+00:00 srv CRON[1086]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:13:31+00:00 srv CRON[1087]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:13:35+00:00 srv sshd[1088]: Accepted publickey for maria from 203.0.113.41 port 27994 ssh2: ED25519 SHA256:abc1088
+2024-01-01T00:13:40+00:00 srv CRON[1089]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:13:40+00:00 srv sudo[1090]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:13:54+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:14:00+00:00 srv CRON[1092]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:05+00:00 srv CRON[1093]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:12+00:00 srv CRON[1094]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:12+00:00 srv sshd[1095]: Accepted publickey for joao from 203.0.113.17 port 54155 ssh2: ED25519 SHA256:abc1095
+2024-01-01T00:14:15+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:14:17+00:00 srv CRON[1097]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:20+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:14:30+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:14:31+00:00 srv CRON[1100]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:34+00:00 srv sudo[1101]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:14:37+00:00 srv sudo[1102]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:14:43+00:00 srv CRON[1103]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:14:43+00:00 srv sshd[1104]: Accepted publickey for joao from 198.51.100.181 port 47359 ssh2: ED25519 SHA256:abc1104
+2024-01-01T00:14:52+00:00 srv sshd[1105]: Failed password for maria from 192.0.2.212 port 54461 ssh2
+2024-01-01T00:14:55+00:00 srv sshd[1105]: Accepted password for maria from 192.0.2.212 port 30768 ssh2
+2024-01-01T00:14:59+00:00 srv CRON[1106]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:15:06+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:15:09+00:00 srv sshd[1108]: Accepted publickey for maria from 198.51.100.178 port 25792 ssh2: ED25519 SHA256:abc1108
+2024-01-01T00:15:17+00:00 srv CRON[1109]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:15:24+00:00 srv sshd[1110]: Accepted publickey for maria from 203.0.113.61 port 27330 ssh2: ED25519 SHA256:abc1110
+2024-01-01T00:15:30+00:00 srv sshd[1111]: Accepted publickey for maria from 192.0.2.146 port 30826 ssh2: ED25519 SHA256:abc1111
+2024-01-01T00:15:30+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:15:40+00:00 srv sudo[1113]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:15:43+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:15:49+00:00 srv CRON[1115]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:15:56+00:00 srv sshd[1116]: Accepted publickey for backup from 192.0.2.153 port 57546 ssh2: ED25519 SHA256:abc1116
+2024-01-01T00:16:05+00:00 srv CRON[1117]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:16:25+00:00 srv sshd[1118]: Accepted publickey for ana from 203.0.113.28 port 53558 ssh2: ED25519 SHA256:abc1118
+2024-01-01T00:16:29+00:00 srv CRON[1119]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:16:31+00:00 srv sshd[1120]: Failed password for maria from 192.0.2.107 port 48600 ssh2
+2024-01-01T00:16:34+00:00 srv sshd[1120]: Accepted password for maria from 192.0.2.107 port 39538 ssh2
+2024-01-01T00:16:44+00:00 srv sshd[1121]: Accepted publickey for ana from 203.0.113.17 port 36202 ssh2: ED25519 SHA256:abc1121
+2024-01-01T00:16:52+00:00 srv CRON[1122]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:17:08+00:00 srv CRON[1123]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:17:15+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:17:25+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:17:46+00:00 srv CRON[1126]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:17:53+00:00 srv sudo[1127]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:18:10+00:00 srv sudo[1128]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:18:14+00:00 srv sudo[1129]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:18:21+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:18:25+00:00 srv sshd[1131]: Accepted publickey for ana from 198.51.100.194 port 59520 ssh2: ED25519 SHA256:abc1131
+2024-01-01T00:18:37+00:00 srv sshd[1132]: Accepted publickey for backup from 198.51.100.10 port 24029 ssh2: ED25519 SHA256:abc1132
+2024-01-01T00:18:40+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:18:49+00:00 srv sshd[1134]: Accepted publickey for backup from 203.0.113.157 port 32184 ssh2: ED25519 SHA256:abc1134
+2024-01-01T00:18:49+00:00 srv sshd[1135]: Accepted publickey for joao from 203.0.113.38 port 49713 ssh2: ED25519 SHA256:abc1135
+2024-01-01T00:18:51+00:00 srv sudo[1136]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:19:09+00:00 srv sshd[1137]: Accepted publickey for maria from 198.51.100.47 port 24385 ssh2: ED25519 SHA256:abc1137
+2024-01-01T00:19:18+00:00 srv sudo[1138]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:19:22+00:00 srv sshd[1139]: Accepted publickey for joao from 203.0.113.192 port 56430 ssh2: ED25519 SHA256:abc1139
+2024-01-01T00:19:25+00:00 srv sshd[1140]: Accepted publickey for maria from 203.0.113.49 port 43624 ssh2: ED25519 SHA256:abc1140
+2024-01-01T00:19:25+00:00 srv sshd[1141]: Accepted publickey for joao from 198.51.100.99 port 28914 ssh2: ED25519 SHA256:abc1141
+2024-01-01T00:19:32+00:00 srv sshd[1142]: Accepted publickey for backup from 192.0.2.120 port 59587 ssh2: ED25519 SHA256:abc1142
+2024-01-01T00:19:38+00:00 srv CRON[1143]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:19:41+00:00 srv sudo[1144]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:19:43+00:00 srv sudo[1145]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:19:43+00:00 srv CRON[1146]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:19:50+00:00 srv CRON[1147]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:19:57+00:00 srv CRON[1148]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:20:04+00:00 srv sshd[5000]: Invalid user root from 203.0.113.235 port 40000
+2024-01-01T00:20:05+00:00 srv sshd[5000]: Failed password for invalid user root from 203.0.113.235 port 40000 ssh2
+2024-01-01T00:20:06+00:00 srv sudo[1149]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:20:08+00:00 srv sshd[5001]: Invalid user admin from 203.0.113.235 port 40001
+2024-01-01T00:20:09+00:00 srv CRON[1150]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:20:09+00:00 srv sshd[5001]: Failed password for invalid user admin from 203.0.113.235 port 40001 ssh2
+2024-01-01T00:20:10+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:20:12+00:00 srv sshd[5002]: Invalid user ubuntu from 203.0.113.235 port 40002
+2024-01-01T00:20:13+00:00 srv sshd[5002]: Failed password for invalid user ubuntu from 203.0.113.235 port 40002 ssh2
+2024-01-01T00:20:16+00:00 srv sshd[5003]: Invalid user oracle from 203.0.113.235 port 40003
+2024-01-01T00:20:17+00:00 srv sshd[5003]: Failed password for invalid user oracle from 203.0.113.235 port 40003 ssh2
+2024-01-01T00:20:17+00:00 srv sudo[1152]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:20:19+00:00 srv sudo[1153]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:20:20+00:00 srv sshd[5004]: Invalid user test from 203.0.113.235 port 40004
+2024-01-01T00:20:21+00:00 srv sshd[5004]: Failed password for invalid user test from 203.0.113.235 port 40004 ssh2
+2024-01-01T00:20:24+00:00 srv sshd[5005]: Invalid user postgres from 203.0.113.235 port 40005
+2024-01-01T00:20:25+00:00 srv sshd[5005]: Failed password for invalid user postgres from 203.0.113.235 port 40005 ssh2
+2024-01-01T00:20:29+00:00 srv sshd[5006]: Failed password for root from 203.0.113.235 port 40006 ssh2
+2024-01-01T00:20:33+00:00 srv sshd[5007]: Failed password for admin from 203.0.113.235 port 40007 ssh2
+2024-01-01T00:20:37+00:00 srv sshd[5008]: Failed password for ubuntu from 203.0.113.235 port 40008 ssh2
+2024-01-01T00:20:41+00:00 srv sshd[5009]: Failed password for oracle from 203.0.113.235 port 40009 ssh2
+2024-01-01T00:20:45+00:00 srv sshd[5010]: Failed password for test from 203.0.113.235 port 40010 ssh2
+2024-01-01T00:20:49+00:00 srv sshd[5011]: Failed password for postgres from 203.0.113.235 port 40011 ssh2
+2024-01-01T00:20:51+00:00 srv CRON[1154]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:21:03+00:00 srv sshd[1155]: Accepted publickey for backup from 198.51.100.29 port 51209 ssh2: ED25519 SHA256:abc1155
+2024-01-01T00:21:14+00:00 srv sshd[5020]: Accepted password for root from 203.0.113.235 port 41000 ssh2
+2024-01-01T00:21:23+00:00 srv sshd[1156]: Accepted publickey for joao from 192.0.2.165 port 51413 ssh2: ED25519 SHA256:abc1156
+2024-01-01T00:21:44+00:00 srv sudo[5021]:   root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/bash
+2024-01-01T00:21:48+00:00 srv sshd[1157]: Accepted publickey for backup from 198.51.100.174 port 36374 ssh2: ED25519 SHA256:abc1157
+2024-01-01T00:21:51+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:21:53+00:00 srv sshd[1159]: Accepted publickey for maria from 203.0.113.15 port 50050 ssh2: ED25519 SHA256:abc1159
+2024-01-01T00:21:54+00:00 srv useradd[5022]: new user: name=support, UID=1001, GID=1001, home=/home/support, shell=/bin/bash, from=/dev/pts/0
+2024-01-01T00:21:57+00:00 srv CRON[1160]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:22:00+00:00 srv sshd[1161]: Accepted publickey for backup from 198.51.100.220 port 30906 ssh2: ED25519 SHA256:abc1161
+2024-01-01T00:22:03+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:22:04+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:22:04+00:00 srv sshd[5000]: Invalid user root from 203.0.113.216 port 40000
+2024-01-01T00:22:04+00:00 srv sshd[5000]: Failed password for invalid user root from 203.0.113.216 port 40000 ssh2
+2024-01-01T00:22:08+00:00 srv sshd[5001]: Invalid user admin from 203.0.113.216 port 40001
+2024-01-01T00:22:08+00:00 srv sshd[5001]: Failed password for invalid user admin from 203.0.113.216 port 40001 ssh2
+2024-01-01T00:22:12+00:00 srv sshd[5002]: Invalid user ubuntu from 203.0.113.216 port 40002
+2024-01-01T00:22:12+00:00 srv sshd[5002]: Failed password for invalid user ubuntu from 203.0.113.216 port 40002 ssh2
+2024-01-01T00:22:16+00:00 srv sshd[1164]: Accepted publickey for maria from 192.0.2.228 port 45845 ssh2: ED25519 SHA256:abc1164
+2024-01-01T00:22:16+00:00 srv sshd[5003]: Invalid user oracle from 203.0.113.216 port 40003
+2024-01-01T00:22:16+00:00 srv sshd[5003]: Failed password for invalid user oracle from 203.0.113.216 port 40003 ssh2
+2024-01-01T00:22:20+00:00 srv sshd[5004]: Invalid user test from 203.0.113.216 port 40004
+2024-01-01T00:22:20+00:00 srv sshd[5004]: Failed password for invalid user test from 203.0.113.216 port 40004 ssh2
+2024-01-01T00:22:24+00:00 srv sshd[5005]: Invalid user postgres from 203.0.113.216 port 40005
+2024-01-01T00:22:24+00:00 srv sshd[5005]: Failed password for invalid user postgres from 203.0.113.216 port 40005 ssh2
+2024-01-01T00:22:26+00:00 srv sudo[1165]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:22:28+00:00 srv sshd[5006]: Failed password for root from 203.0.113.216 port 40006 ssh2
+2024-01-01T00:22:32+00:00 srv sshd[5007]: Failed password for admin from 203.0.113.216 port 40007 ssh2
+2024-01-01T00:22:32+00:00 srv CRON[1166]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:22:35+00:00 srv CRON[1167]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:22:36+00:00 srv sshd[5008]: Failed password for ubuntu from 203.0.113.216 port 40008 ssh2
+2024-01-01T00:22:40+00:00 srv sshd[5009]: Failed password for oracle from 203.0.113.216 port 40009 ssh2
+2024-01-01T00:22:42+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:22:44+00:00 srv sshd[5010]: Failed password for test from 203.0.113.216 port 40010 ssh2
+2024-01-01T00:22:48+00:00 srv sshd[5011]: Failed password for postgres from 203.0.113.216 port 40011 ssh2
+2024-01-01T00:22:50+00:00 srv sudo[1169]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:23:10+00:00 srv CRON[1170]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:23:11+00:00 srv CRON[1171]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:23:14+00:00 srv sshd[5020]: Accepted password for root from 203.0.113.216 port 41000 ssh2
+2024-01-01T00:23:30+00:00 srv sshd[1172]: Accepted publickey for deploy from 203.0.113.32 port 30674 ssh2: ED25519 SHA256:abc1172
+2024-01-01T00:23:34+00:00 srv CRON[1173]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:23:43+00:00 srv sudo[1174]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:23:44+00:00 srv sudo[5021]:   root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/bin/bash
+2024-01-01T00:23:52+00:00 srv sshd[1175]: Accepted publickey for deploy from 192.0.2.160 port 41013 ssh2: ED25519 SHA256:abc1175
+2024-01-01T00:23:54+00:00 srv useradd[5022]: new user: name=support, UID=1001, GID=1001, home=/home/support, shell=/bin/bash, from=/dev/pts/0
+2024-01-01T00:24:04+00:00 srv sshd[1176]: Accepted publickey for joao from 192.0.2.111 port 42314 ssh2: ED25519 SHA256:abc1176
+2024-01-01T00:24:08+00:00 srv CRON[1177]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:24:11+00:00 srv sshd[1178]: Accepted publickey for maria from 198.51.100.6 port 45935 ssh2: ED25519 SHA256:abc1178
+2024-01-01T00:24:18+00:00 srv sshd[1179]: Accepted publickey for maria from 198.51.100.249 port 34896 ssh2: ED25519 SHA256:abc1179
+2024-01-01T00:24:19+00:00 srv CRON[1180]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:24:20+00:00 srv CRON[1181]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:24:21+00:00 srv sshd[1182]: Failed password for joao from 203.0.113.165 port 55157 ssh2
+2024-01-01T00:24:24+00:00 srv sshd[1182]: Accepted password for joao from 203.0.113.165 port 57672 ssh2
+2024-01-01T00:24:26+00:00 srv CRON[1183]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:24:32+00:00 srv sshd[1184]: Accepted publickey for joao from 198.51.100.209 port 56880 ssh2: ED25519 SHA256:abc1184
+2024-01-01T00:24:32+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:24:34+00:00 srv sudo[1186]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:24:34+00:00 srv sshd[1187]: Failed password for deploy from 203.0.113.191 port 24019 ssh2
+2024-01-01T00:24:37+00:00 srv sshd[1187]: Accepted password for deploy from 203.0.113.191 port 22205 ssh2
+2024-01-01T00:24:42+00:00 srv CRON[1188]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:04+00:00 srv CRON[1189]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:12+00:00 srv CRON[1190]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:13+00:00 srv CRON[1191]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:22+00:00 srv sudo[1192]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:25:36+00:00 srv CRON[1193]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:43+00:00 srv sshd[1194]: Accepted publickey for maria from 192.0.2.174 port 40705 ssh2: ED25519 SHA256:abc1194
+2024-01-01T00:25:44+00:00 srv sudo[1195]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:25:46+00:00 srv CRON[1196]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:25:56+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:26:00+00:00 srv sshd[1198]: Accepted publickey for maria from 192.0.2.212 port 47085 ssh2: ED25519 SHA256:abc1198
+2024-01-01T00:26:12+00:00 srv sudo[1199]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:26:25+00:00 srv sshd[1200]: Accepted publickey for joao from 203.0.113.24 port 35996 ssh2: ED25519 SHA256:abc1200
+2024-01-01T00:26:28+00:00 srv sudo[1201]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:26:38+00:00 srv sshd[1202]: Accepted publickey for maria from 192.0.2.180 port 27622 ssh2: ED25519 SHA256:abc1202
+2024-01-01T00:26:43+00:00 srv sshd[1203]: Accepted publickey for joao from 198.51.100.14 port 43531 ssh2: ED25519 SHA256:abc1203
+2024-01-01T00:26:44+00:00 srv CRON[1204]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:26:48+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:26:53+00:00 srv sshd[1206]: Accepted publickey for joao from 203.0.113.117 port 36237 ssh2: ED25519 SHA256:abc1206
+2024-01-01T00:27:05+00:00 srv sshd[1207]: Accepted publickey for ana from 198.51.100.129 port 34289 ssh2: ED25519 SHA256:abc1207
+2024-01-01T00:27:07+00:00 srv sudo[1208]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:27:08+00:00 srv sshd[1209]: Failed password for joao from 198.51.100.154 port 45194 ssh2
+2024-01-01T00:27:11+00:00 srv sshd[1209]: Accepted password for joao from 198.51.100.154 port 35966 ssh2
+2024-01-01T00:27:15+00:00 srv sshd[1210]: Accepted publickey for ana from 203.0.113.131 port 46296 ssh2: ED25519 SHA256:abc1210
+2024-01-01T00:27:17+00:00 srv sshd[1211]: Accepted publickey for ana from 192.0.2.110 port 44637 ssh2: ED25519 SHA256:abc1211
+2024-01-01T00:27:17+00:00 srv sshd[1212]: Accepted publickey for deploy from 192.0.2.185 port 27565 ssh2: ED25519 SHA256:abc1212
+2024-01-01T00:27:29+00:00 srv sshd[1213]: Failed password for deploy from 192.0.2.75 port 33209 ssh2
+2024-01-01T00:27:32+00:00 srv sshd[1213]: Accepted password for deploy from 192.0.2.75 port 39028 ssh2
+2024-01-01T00:27:45+00:00 srv CRON[1214]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:27:49+00:00 srv sshd[1215]: Accepted publickey for maria from 198.51.100.127 port 52290 ssh2: ED25519 SHA256:abc1215
+2024-01-01T00:27:50+00:00 srv sudo[1216]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:27:53+00:00 srv sudo[1217]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:27:58+00:00 srv sudo[1218]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:28:13+00:00 srv CRON[1219]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:28:14+00:00 srv CRON[1220]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:28:21+00:00 srv sudo[1221]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:28:25+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:28:30+00:00 srv sudo[1223]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:28:32+00:00 srv CRON[1224]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:28:47+00:00 srv CRON[1225]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:28:52+00:00 srv CRON[1226]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:29:03+00:00 srv CRON[1227]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:29:06+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:29:20+00:00 srv CRON[1229]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:29:21+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:29:44+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:29:47+00:00 srv sshd[1232]: Accepted publickey for deploy from 198.51.100.162 port 32799 ssh2: ED25519 SHA256:abc1232
+2024-01-01T00:29:52+00:00 srv sshd[1233]: Accepted publickey for backup from 198.51.100.31 port 36327 ssh2: ED25519 SHA256:abc1233
+2024-01-01T00:29:54+00:00 srv sudo[1234]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:30:01+00:00 srv CRON[1235]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:30:04+00:00 srv CRON[1236]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:30:16+00:00 srv CRON[1237]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:30:38+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:30:41+00:00 srv sshd[1239]: Accepted publickey for ana from 192.0.2.37 port 23726 ssh2: ED25519 SHA256:abc1239
+2024-01-01T00:30:41+00:00 srv sudo[1240]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:30:46+00:00 srv sshd[1241]: Accepted publickey for ana from 198.51.100.172 port 55467 ssh2: ED25519 SHA256:abc1241
+2024-01-01T00:31:22+00:00 srv sshd[1242]: Accepted publickey for maria from 198.51.100.156 port 37886 ssh2: ED25519 SHA256:abc1242
+2024-01-01T00:31:33+00:00 srv sudo[1243]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:31:43+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:31:51+00:00 srv sudo[1245]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:32:18+00:00 srv sshd[1246]: Failed password for maria from 198.51.100.164 port 38644 ssh2
+2024-01-01T00:32:21+00:00 srv sshd[1246]: Accepted password for maria from 198.51.100.164 port 38411 ssh2
+2024-01-01T00:32:23+00:00 srv sudo[1247]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:32:31+00:00 srv sudo[1248]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:32:35+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:32:38+00:00 srv CRON[1250]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:32:40+00:00 srv sudo[1251]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:32:46+00:00 srv sshd[1252]: Accepted publickey for deploy from 198.51.100.74 port 24385 ssh2: ED25519 SHA256:abc1252
+2024-01-01T00:32:52+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:32:56+00:00 srv CRON[1254]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:32:57+00:00 srv sudo[1255]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:33:05+00:00 srv sudo[1256]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:33:26+00:00 srv CRON[1257]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:33:39+00:00 srv sshd[1258]: Accepted publickey for ana from 203.0.113.148 port 44439 ssh2: ED25519 SHA256:abc1258
+2024-01-01T00:33:42+00:00 srv sudo[1259]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:33:44+00:00 srv CRON[1260]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:33:56+00:00 srv sudo[1261]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:34:20+00:00 srv sshd[1262]: Accepted publickey for maria from 192.0.2.133 port 29017 ssh2: ED25519 SHA256:abc1262
+2024-01-01T00:34:22+00:00 srv CRON[1263]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:34:28+00:00 srv sudo[1264]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:34:35+00:00 srv CRON[1265]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:34:40+00:00 srv sudo[1266]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:34:40+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:34:42+00:00 srv sudo[1268]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:34:48+00:00 srv sudo[1269]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:35:13+00:00 srv sudo[1270]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:35:21+00:00 srv CRON[1271]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:35:37+00:00 srv sudo[1272]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:35:47+00:00 srv CRON[1273]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:36:11+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:36:29+00:00 srv sudo[1275]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:36:30+00:00 srv sshd[1276]: Accepted publickey for backup from 198.51.100.11 port 29912 ssh2: ED25519 SHA256:abc1276
+2024-01-01T00:36:32+00:00 srv CRON[1277]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:36:57+00:00 srv sudo[1278]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:37:03+00:00 srv sudo[1279]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:37:03+00:00 srv sshd[1280]: Accepted publickey for ana from 203.0.113.70 port 21788 ssh2: ED25519 SHA256:abc1280
+2024-01-01T00:37:12+00:00 srv sudo[1281]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:37:14+00:00 srv CRON[1282]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:37:25+00:00 srv sshd[1283]: Accepted publickey for maria from 203.0.113.53 port 45644 ssh2: ED25519 SHA256:abc1283
+2024-01-01T00:37:28+00:00 srv CRON[1284]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:37:39+00:00 srv CRON[1285]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:38:35+00:00 srv sudo[1286]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:38:37+00:00 srv sudo[1287]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:38:40+00:00 srv sshd[1288]: Accepted publickey for joao from 203.0.113.122 port 47231 ssh2: ED25519 SHA256:abc1288
+2024-01-01T00:38:49+00:00 srv sshd[1289]: Accepted publickey for deploy from 192.0.2.5 port 50463 ssh2: ED25519 SHA256:abc1289
+2024-01-01T00:38:53+00:00 srv sudo[1290]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:39:05+00:00 srv CRON[1291]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:39:06+00:00 srv CRON[1292]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:39:11+00:00 srv CRON[1293]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:39:36+00:00 srv sshd[1294]: Accepted publickey for joao from 192.0.2.53 port 55851 ssh2: ED25519 SHA256:abc1294
+2024-01-01T00:39:43+00:00 srv CRON[1295]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:39:51+00:00 srv sshd[1296]: Accepted publickey for backup from 203.0.113.22 port 22110 ssh2: ED25519 SHA256:abc1296
+2024-01-01T00:39:52+00:00 srv CRON[1297]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:40:01+00:00 srv CRON[1298]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:40:02+00:00 srv sudo[1299]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:40:10+00:00 srv CRON[1300]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:40:11+00:00 srv sshd[1301]: Accepted publickey for backup from 192.0.2.244 port 45035 ssh2: ED25519 SHA256:abc1301
+2024-01-01T00:40:11+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:40:14+00:00 srv sudo[1303]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:40:21+00:00 srv CRON[1304]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:40:24+00:00 srv sshd[1305]: Accepted publickey for maria from 192.0.2.87 port 23623 ssh2: ED25519 SHA256:abc1305
+2024-01-01T00:40:33+00:00 srv sshd[1306]: Accepted publickey for maria from 203.0.113.32 port 31351 ssh2: ED25519 SHA256:abc1306
+2024-01-01T00:40:38+00:00 srv sudo[1307]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:41:08+00:00 srv sudo[1308]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:41:23+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:41:24+00:00 srv sshd[1310]: Accepted publickey for backup from 198.51.100.139 port 22445 ssh2: ED25519 SHA256:abc1310
+2024-01-01T00:41:27+00:00 srv sshd[1311]: Accepted publickey for backup from 198.51.100.180 port 45820 ssh2: ED25519 SHA256:abc1311
+2024-01-01T00:41:32+00:00 srv sshd[1312]: Accepted publickey for backup from 198.51.100.78 port 35668 ssh2: ED25519 SHA256:abc1312
+2024-01-01T00:41:54+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:41:55+00:00 srv sshd[1314]: Accepted publickey for ana from 203.0.113.23 port 48990 ssh2: ED25519 SHA256:abc1314
+2024-01-01T00:42:21+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:42:25+00:00 srv sshd[1316]: Accepted publickey for backup from 203.0.113.137 port 42384 ssh2: ED25519 SHA256:abc1316
+2024-01-01T00:42:35+00:00 srv sudo[1317]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:42:57+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:43:30+00:00 srv sshd[1319]: Accepted publickey for joao from 192.0.2.226 port 59716 ssh2: ED25519 SHA256:abc1319
+2024-01-01T00:43:31+00:00 srv sshd[1320]: Accepted publickey for joao from 192.0.2.109 port 33196 ssh2: ED25519 SHA256:abc1320
+2024-01-01T00:43:32+00:00 srv CRON[1321]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:43:43+00:00 srv sshd[1322]: Accepted publickey for maria from 192.0.2.157 port 36792 ssh2: ED25519 SHA256:abc1322
+2024-01-01T00:43:48+00:00 srv sshd[1323]: Accepted publickey for maria from 198.51.100.4 port 26507 ssh2: ED25519 SHA256:abc1323
+2024-01-01T00:43:51+00:00 srv sudo[1324]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:44:00+00:00 srv sudo[1325]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:44:17+00:00 srv CRON[1326]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:44:29+00:00 srv sshd[1327]: Accepted publickey for joao from 203.0.113.19 port 43202 ssh2: ED25519 SHA256:abc1327
+2024-01-01T00:44:31+00:00 srv CRON[1328]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:44:37+00:00 srv sudo[1329]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:44:40+00:00 srv CRON[1330]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:44:41+00:00 srv sshd[1331]: Accepted publickey for maria from 198.51.100.105 port 57728 ssh2: ED25519 SHA256:abc1331
+2024-01-01T00:44:42+00:00 srv sshd[1332]: Accepted publickey for backup from 198.51.100.159 port 22724 ssh2: ED25519 SHA256:abc1332
+2024-01-01T00:44:45+00:00 srv sshd[1333]: Accepted publickey for maria from 192.0.2.36 port 32112 ssh2: ED25519 SHA256:abc1333
+2024-01-01T00:44:49+00:00 srv sshd[1334]: Accepted publickey for maria from 192.0.2.104 port 33801 ssh2: ED25519 SHA256:abc1334
+2024-01-01T00:45:18+00:00 srv CRON[1335]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:45:28+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:45:29+00:00 srv sshd[1337]: Accepted publickey for ana from 203.0.113.78 port 50859 ssh2: ED25519 SHA256:abc1337
+2024-01-01T00:45:42+00:00 srv CRON[1338]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:45:46+00:00 srv sshd[1339]: Failed password for ana from 198.51.100.221 port 57339 ssh2
+2024-01-01T00:45:49+00:00 srv sshd[1339]: Accepted password for ana from 198.51.100.221 port 42716 ssh2
+2024-01-01T00:45:53+00:00 srv sudo[1340]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:45:53+00:00 srv sshd[1341]: Accepted publickey for deploy from 192.0.2.44 port 57227 ssh2: ED25519 SHA256:abc1341
+2024-01-01T00:46:13+00:00 srv sshd[1342]: Accepted publickey for backup from 192.0.2.187 port 38787 ssh2: ED25519 SHA256:abc1342
+2024-01-01T00:46:31+00:00 srv CRON[1343]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:46:34+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:46:36+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:46:39+00:00 srv sshd[1346]: Accepted publickey for joao from 192.0.2.174 port 35812 ssh2: ED25519 SHA256:abc1346
+2024-01-01T00:46:50+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:47:04+00:00 srv sudo[1348]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:47:09+00:00 srv sshd[1349]: Accepted publickey for deploy from 203.0.113.163 port 54029 ssh2: ED25519 SHA256:abc1349
+2024-01-01T00:47:12+00:00 srv sshd[1350]: Failed password for ana from 192.0.2.199 port 20614 ssh2
+2024-01-01T00:47:15+00:00 srv sshd[1350]: Accepted password for ana from 192.0.2.199 port 55735 ssh2
+2024-01-01T00:47:20+00:00 srv CRON[1351]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:47:24+00:00 srv sudo[1352]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:47:35+00:00 srv sudo[1353]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:47:35+00:00 srv sshd[1354]: Failed password for ana from 192.0.2.164 port 50156 ssh2
+2024-01-01T00:47:38+00:00 srv sshd[1354]: Accepted password for ana from 192.0.2.164 port 57360 ssh2
+2024-01-01T00:47:40+00:00 srv CRON[1355]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:47:41+00:00 srv sshd[1356]: Accepted publickey for maria from 198.51.100.58 port 30359 ssh2: ED25519 SHA256:abc1356
+2024-01-01T00:47:42+00:00 srv sudo[1357]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:47:44+00:00 srv sshd[1358]: Accepted publickey for deploy from 203.0.113.163 port 22782 ssh2: ED25519 SHA256:abc1358
+2024-01-01T00:47:46+00:00 srv CRON[1359]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:47:57+00:00 srv CRON[1360]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:48:08+00:00 srv sudo[1361]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:48:16+00:00 srv sudo[1362]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:48:22+00:00 srv sudo[1363]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:48:28+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:48:39+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:49:02+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:49:16+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:49:19+00:00 srv CRON[1368]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:49:24+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:49:41+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:49:53+00:00 srv sudo[1371]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:49:54+00:00 srv CRON[1372]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:50:08+00:00 srv CRON[1373]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:50:27+00:00 srv sudo[1374]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:50:29+00:00 srv sudo[1375]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:50:31+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:50:31+00:00 srv sudo[1377]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:50:44+00:00 srv CRON[1378]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:50:59+00:00 srv sudo[1379]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:51:02+00:00 srv sshd[1380]: Accepted publickey for backup from 192.0.2.250 port 23875 ssh2: ED25519 SHA256:abc1380
+2024-01-01T00:51:08+00:00 srv CRON[1381]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:51:10+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:51:37+00:00 srv sudo[1383]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:51:38+00:00 srv sudo[1384]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:52:01+00:00 srv sudo[1385]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T00:52:09+00:00 srv CRON[1386]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:13+00:00 srv sshd[1387]: Accepted publickey for ana from 198.51.100.159 port 31230 ssh2: ED25519 SHA256:abc1387
+2024-01-01T00:52:23+00:00 srv CRON[1388]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:27+00:00 srv sshd[1389]: Accepted publickey for backup from 198.51.100.49 port 32210 ssh2: ED25519 SHA256:abc1389
+2024-01-01T00:52:31+00:00 srv CRON[1390]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:35+00:00 srv CRON[1391]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:49+00:00 srv CRON[1392]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:50+00:00 srv CRON[1393]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:52:56+00:00 srv sshd[1394]: Accepted publickey for ana from 203.0.113.12 port 37593 ssh2: ED25519 SHA256:abc1394
+2024-01-01T00:53:04+00:00 srv sshd[1395]: Accepted publickey for maria from 192.0.2.124 port 52988 ssh2: ED25519 SHA256:abc1395
+2024-01-01T00:53:08+00:00 srv CRON[1396]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:53:14+00:00 srv sshd[1397]: Accepted publickey for backup from 203.0.113.15 port 44664 ssh2: ED25519 SHA256:abc1397
+2024-01-01T00:53:20+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:53:27+00:00 srv sshd[1399]: Accepted publickey for ana from 192.0.2.180 port 36767 ssh2: ED25519 SHA256:abc1399
+2024-01-01T00:53:27+00:00 srv sshd[1400]: Accepted publickey for deploy from 198.51.100.128 port 46865 ssh2: ED25519 SHA256:abc1400
+2024-01-01T00:53:29+00:00 srv sudo[1401]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:53:30+00:00 srv CRON[1402]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:53:50+00:00 srv sudo[1403]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:53:57+00:00 srv sshd[1404]: Accepted publickey for backup from 198.51.100.195 port 34803 ssh2: ED25519 SHA256:abc1404
+2024-01-01T00:53:58+00:00 srv CRON[1405]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:54:03+00:00 srv sshd[1406]: Accepted publickey for joao from 203.0.113.45 port 20633 ssh2: ED25519 SHA256:abc1406
+2024-01-01T00:54:05+00:00 srv sshd[1407]: Accepted publickey for maria from 203.0.113.170 port 42810 ssh2: ED25519 SHA256:abc1407
+2024-01-01T00:54:08+00:00 srv sudo[1408]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T00:54:13+00:00 srv sshd[1409]: Accepted publickey for deploy from 198.51.100.164 port 57977 ssh2: ED25519 SHA256:abc1409
+2024-01-01T00:54:38+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:54:51+00:00 srv CRON[1411]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:54:56+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:55:00+00:00 srv CRON[1413]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:55:11+00:00 srv CRON[1414]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:55:18+00:00 srv sshd[1415]: Accepted publickey for ana from 192.0.2.216 port 53733 ssh2: ED25519 SHA256:abc1415
+2024-01-01T00:55:31+00:00 srv sudo[1416]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:55:34+00:00 srv CRON[1417]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:55:55+00:00 srv sshd[1418]: Accepted publickey for joao from 203.0.113.101 port 21876 ssh2: ED25519 SHA256:abc1418
+2024-01-01T00:56:01+00:00 srv CRON[1419]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:56:08+00:00 srv CRON[1420]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:56:09+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:56:24+00:00 srv sshd[1422]: Accepted publickey for joao from 203.0.113.168 port 21446 ssh2: ED25519 SHA256:abc1422
+2024-01-01T00:56:24+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:56:24+00:00 srv sshd[1424]: Accepted publickey for maria from 198.51.100.152 port 36939 ssh2: ED25519 SHA256:abc1424
+2024-01-01T00:56:26+00:00 srv sudo[1425]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T00:56:27+00:00 srv CRON[1426]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:56:38+00:00 srv sshd[1427]: Accepted publickey for ana from 198.51.100.137 port 55736 ssh2: ED25519 SHA256:abc1427
+2024-01-01T00:56:50+00:00 srv CRON[1428]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:57:01+00:00 srv sshd[1429]: Accepted publickey for ana from 203.0.113.192 port 56725 ssh2: ED25519 SHA256:abc1429
+2024-01-01T00:57:09+00:00 srv sudo[1430]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T00:57:11+00:00 srv CRON[1431]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:57:20+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T00:57:21+00:00 srv sshd[1433]: Accepted publickey for joao from 203.0.113.4 port 58118 ssh2: ED25519 SHA256:abc1433
+2024-01-01T00:57:28+00:00 srv CRON[1434]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:57:40+00:00 srv CRON[1435]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:14+00:00 srv CRON[1436]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:22+00:00 srv CRON[1437]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:22+00:00 srv CRON[1438]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:34+00:00 srv sshd[1439]: Accepted publickey for deploy from 203.0.113.21 port 33557 ssh2: ED25519 SHA256:abc1439
+2024-01-01T00:58:41+00:00 srv sudo[1440]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:58:42+00:00 srv CRON[1441]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:47+00:00 srv CRON[1442]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:48+00:00 srv CRON[1443]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:49+00:00 srv sudo[1444]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T00:58:51+00:00 srv sudo[1445]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:58:57+00:00 srv CRON[1446]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:58:58+00:00 srv sshd[1447]: Accepted publickey for deploy from 198.51.100.69 port 47082 ssh2: ED25519 SHA256:abc1447
+2024-01-01T00:59:05+00:00 srv CRON[1448]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:59:06+00:00 srv sudo[1449]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T00:59:09+00:00 srv sudo[1450]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx
+2024-01-01T00:59:13+00:00 srv sshd[1451]: Accepted publickey for backup from 203.0.113.163 port 54705 ssh2: ED25519 SHA256:abc1451
+2024-01-01T00:59:19+00:00 srv CRON[1452]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:59:23+00:00 srv CRON[1453]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T00:59:30+00:00 srv sshd[1454]: Accepted publickey for backup from 198.51.100.174 port 34827 ssh2: ED25519 SHA256:abc1454
+2024-01-01T00:59:37+00:00 srv sshd[1455]: Accepted publickey for deploy from 198.51.100.78 port 50651 ssh2: ED25519 SHA256:abc1455
+2024-01-01T00:59:53+00:00 srv sudo[1456]:   maria : TTY=pts/0 ; PWD=/home/maria ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T01:00:13+00:00 srv sshd[1457]: Accepted publickey for maria from 192.0.2.251 port 34103 ssh2: ED25519 SHA256:abc1457
+2024-01-01T01:00:18+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T01:00:36+00:00 srv sshd[1459]: Accepted publickey for ana from 198.51.100.211 port 34837 ssh2: ED25519 SHA256:abc1459
+2024-01-01T01:00:37+00:00 srv sudo[1460]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T01:00:44+00:00 srv CRON[1461]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:00:47+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T01:00:52+00:00 srv CRON[1463]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:00:56+00:00 srv sshd[1464]: Accepted publickey for joao from 198.51.100.48 port 36958 ssh2: ED25519 SHA256:abc1464
+2024-01-01T01:01:09+00:00 srv sshd[1465]: Accepted publickey for backup from 198.51.100.252 port 46730 ssh2: ED25519 SHA256:abc1465
+2024-01-01T01:01:13+00:00 srv CRON[1466]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:01:15+00:00 srv sshd[1467]: Accepted publickey for joao from 198.51.100.178 port 20965 ssh2: ED25519 SHA256:abc1467
+2024-01-01T01:01:16+00:00 srv CRON[1468]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:01:18+00:00 srv CRON[1469]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:01:19+00:00 srv sudo[1470]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf
+2024-01-01T01:01:23+00:00 srv sudo[1471]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/apt update
+2024-01-01T01:01:35+00:00 srv CRON[1472]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:01:45+00:00 srv sudo[1473]:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/usr/bin/apt upgrade -y
+2024-01-01T01:01:48+00:00 srv CRON[1474]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:01:52+00:00 srv sshd[1475]: Accepted publickey for joao from 192.0.2.94 port 44927 ssh2: ED25519 SHA256:abc1475
+2024-01-01T01:01:57+00:00 srv sudo[1476]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T01:01:58+00:00 srv CRON[1477]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:02:00+00:00 srv sudo[1478]:   ana : TTY=pts/0 ; PWD=/home/ana ; USER=root ; COMMAND=/usr/bin/journalctl -u nginx
+2024-01-01T01:02:16+00:00 srv CRON[1479]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:02:19+00:00 srv sshd[1480]: Accepted publickey for backup from 198.51.100.131 port 21725 ssh2: ED25519 SHA256:abc1480
+2024-01-01T01:02:20+00:00 srv CRON[1481]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:02:30+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T01:02:37+00:00 srv sshd[1483]: Accepted publickey for maria from 198.51.100.81 port 58580 ssh2: ED25519 SHA256:abc1483
+2024-01-01T01:02:43+00:00 srv sshd[1484]: Accepted publickey for maria from 203.0.113.92 port 58675 ssh2: ED25519 SHA256:abc1484
+2024-01-01T01:02:47+00:00 srv sudo[1485]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/nginx/error.log
+2024-01-01T01:02:53+00:00 srv CRON[1486]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:03:00+00:00 srv CRON[1487]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:03:02+00:00 srv sudo[1488]:   joao : TTY=pts/0 ; PWD=/home/joao ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T01:03:20+00:00 srv sshd[1489]: Accepted publickey for joao from 192.0.2.99 port 29010 ssh2: ED25519 SHA256:abc1489
+2024-01-01T01:03:24+00:00 srv sshd[1490]: Accepted publickey for backup from 198.51.100.91 port 20749 ssh2: ED25519 SHA256:abc1490
+2024-01-01T01:03:37+00:00 srv CRON[1491]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:03:38+00:00 srv sshd[1492]: Accepted publickey for maria from 203.0.113.39 port 44730 ssh2: ED25519 SHA256:abc1492
+2024-01-01T01:03:40+00:00 srv sudo[1493]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/systemctl status php8.2-fpm
+2024-01-01T01:03:52+00:00 srv sshd[1494]: Accepted publickey for ana from 192.0.2.96 port 39191 ssh2: ED25519 SHA256:abc1494
+2024-01-01T01:03:55+00:00 srv sshd[1495]: Accepted publickey for backup from 198.51.100.102 port 54030 ssh2: ED25519 SHA256:abc1495
+2024-01-01T01:03:58+00:00 srv systemd[1]: Started Daily apt download activities.
+2024-01-01T01:04:04+00:00 srv CRON[1497]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:04:24+00:00 srv CRON[1498]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+2024-01-01T01:04:35+00:00 srv sshd[1499]: Accepted publickey for backup from 192.0.2.208 port 21715 ssh2: ED25519 SHA256:abc1499
+2024-01-01T01:04:37+00:00 srv sudo[1500]:   backup : TTY=pts/0 ; PWD=/home/backup ; USER=root ; COMMAND=/usr/bin/vim /etc/nginx/nginx.conf

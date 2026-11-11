@@ -301,6 +301,7 @@ inventados); nunca adicione logs reais de empresas ao repositório.
 - [docs/threat-model.md](docs/threat-model.md): modelo de ameaça da própria ferramenta.
 - [docs/lab.md](docs/lab.md): roteiro para validar em laboratório isolado e próprio.
 - [packaging/README.md](packaging/README.md): `pipx`, `.deb` e Windows.
+- [exercicios/README.md](exercicios/README.md): provas cegas com logs sintéticos para você analisar e depois corrigir.
 
 ## Escopo ético
 

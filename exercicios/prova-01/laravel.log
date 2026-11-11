@@ -1,0 +1,245 @@
+[2024-01-01 00:00:00] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:00:15] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:00:19] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:00:20] production.INFO: Order created {"id":63447}
+[2024-01-01 00:00:26] production.INFO: Order created {"id":15974}
+[2024-01-01 00:01:00] production.INFO: Order created {"id":4841}
+[2024-01-01 00:01:31] production.INFO: Order created {"id":86025}
+[2024-01-01 00:02:02] production.INFO: Order created {"id":5929}
+[2024-01-01 00:02:21] production.INFO: Order created {"id":65490}
+[2024-01-01 00:02:33] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:02:36] production.ERROR: The password field is required.
+[2024-01-01 00:02:41] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:02:51] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:02:55] production.INFO: Order created {"id":10590}
+[2024-01-01 00:03:23] production.INFO: Order created {"id":23315}
+[2024-01-01 00:04:01] production.INFO: Order created {"id":73848}
+[2024-01-01 00:04:29] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:04:36] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:04:42] production.INFO: Order created {"id":44882}
+[2024-01-01 00:05:21] production.INFO: Order created {"id":52205}
+[2024-01-01 00:05:30] production.INFO: Order created {"id":32839}
+[2024-01-01 00:05:41] production.INFO: Order created {"id":9718}
+[2024-01-01 00:05:49] production.INFO: Order created {"id":69799}
+[2024-01-01 00:06:13] production.INFO: Order created {"id":93765}
+[2024-01-01 00:06:18] production.INFO: Order created {"id":63268}
+[2024-01-01 00:07:03] production.INFO: Order created {"id":78568}
+[2024-01-01 00:07:06] production.INFO: Order created {"id":45582}
+[2024-01-01 00:07:18] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:07:26] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:07:36] production.INFO: Order created {"id":32876}
+[2024-01-01 00:08:13] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:08:25] production.INFO: Order created {"id":97624}
+[2024-01-01 00:08:39] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:08:56] production.INFO: Order created {"id":36073}
+[2024-01-01 00:09:07] production.INFO: Order created {"id":73895}
+[2024-01-01 00:09:40] production.INFO: Order created {"id":67160}
+[2024-01-01 00:09:47] production.INFO: Order created {"id":44434}
+[2024-01-01 00:09:54] production.INFO: Order created {"id":54891}
+[2024-01-01 00:09:59] production.ERROR: The password field is required.
+[2024-01-01 00:10:05] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:10:15] production.INFO: Order created {"id":3408}
+[2024-01-01 00:10:37] production.INFO: Order created {"id":66412}
+[2024-01-01 00:10:42] production.INFO: Order created {"id":13834}
+[2024-01-01 00:11:03] production.INFO: Order created {"id":70643}
+[2024-01-01 00:11:12] production.INFO: Order created {"id":49781}
+[2024-01-01 00:11:12] production.INFO: Order created {"id":32444}
+[2024-01-01 00:11:22] production.INFO: Order created {"id":10214}
+[2024-01-01 00:11:37] production.INFO: Order created {"id":66548}
+[2024-01-01 00:13:02] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:13:25] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:13:50] production.INFO: Order created {"id":9947}
+[2024-01-01 00:14:07] production.INFO: Order created {"id":34810}
+[2024-01-01 00:15:02] production.INFO: Order created {"id":9378}
+[2024-01-01 00:15:19] production.INFO: Order created {"id":88790}
+[2024-01-01 00:15:56] production.ERROR: The password field is required.
+[2024-01-01 00:16:04] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:16:05] production.INFO: Order created {"id":85663}
+[2024-01-01 00:16:05] production.INFO: Order created {"id":97870}
+[2024-01-01 00:16:38] production.INFO: Order created {"id":78379}
+[2024-01-01 00:17:16] production.INFO: Order created {"id":4193}
+[2024-01-01 00:17:26] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:17:26] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:17:33] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:18:01] production.ERROR: The password field is required.
+[2024-01-01 00:18:21] production.INFO: Order created {"id":59823}
+[2024-01-01 00:18:26] production.INFO: Order created {"id":88280}
+[2024-01-01 00:18:51] production.INFO: Order created {"id":40129}
+[2024-01-01 00:19:01] production.INFO: Order created {"id":59166}
+[2024-01-01 00:19:37] production.INFO: Order created {"id":99296}
+[2024-01-01 00:20:36] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:21:12] production.INFO: Order created {"id":56329}
+[2024-01-01 00:21:43] production.INFO: Order created {"id":11667}
+[2024-01-01 00:21:46] production.INFO: Order created {"id":87168}
+[2024-01-01 00:22:12] production.INFO: Order created {"id":73015}
+[2024-01-01 00:22:22] production.INFO: Order created {"id":76814}
+[2024-01-01 00:23:07] production.INFO: Order created {"id":96844}
+[2024-01-01 00:23:08] production.INFO: Order created {"id":71591}
+[2024-01-01 00:23:24] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:23:49] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:23:59] production.INFO: Order created {"id":62425}
+[2024-01-01 00:24:04] production.INFO: Order created {"id":61472}
+[2024-01-01 00:24:22] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:24:47] production.ERROR: The password field is required.
+[2024-01-01 00:26:05] production.INFO: Order created {"id":89314}
+[2024-01-01 00:26:05] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:26:18] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:26:22] production.INFO: Order created {"id":48396}
+[2024-01-01 00:27:06] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:28:18] production.INFO: Order created {"id":64858}
+[2024-01-01 00:28:23] production.INFO: Order created {"id":30727}
+[2024-01-01 00:28:32] production.ERROR: The password field is required.
+[2024-01-01 00:28:42] production.INFO: Order created {"id":15944}
+[2024-01-01 00:28:49] production.INFO: Order created {"id":40141}
+[2024-01-01 00:29:12] production.INFO: Order created {"id":12685}
+[2024-01-01 00:29:21] production.INFO: Order created {"id":58614}
+[2024-01-01 00:29:38] production.INFO: Order created {"id":28894}
+[2024-01-01 00:29:39] production.ERROR: The password field is required.
+[2024-01-01 00:30:12] production.INFO: Order created {"id":57913}
+[2024-01-01 00:30:30] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:30:33] production.INFO: Order created {"id":93308}
+[2024-01-01 00:30:34] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:30:43] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:30:49] production.INFO: Order created {"id":87471}
+[2024-01-01 00:30:54] production.INFO: Order created {"id":70180}
+[2024-01-01 00:30:57] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:31:10] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:31:26] production.INFO: Order created {"id":57135}
+[2024-01-01 00:31:29] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:32:11] production.INFO: Order created {"id":1159}
+[2024-01-01 00:32:14] production.INFO: Order created {"id":95290}
+[2024-01-01 00:32:43] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:33:27] production.INFO: Order created {"id":89082}
+[2024-01-01 00:33:56] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:34:35] production.INFO: Order created {"id":20636}
+[2024-01-01 00:34:36] production.INFO: Order created {"id":19025}
+[2024-01-01 00:35:15] production.ERROR: The password field is required.
+[2024-01-01 00:35:51] production.INFO: Order created {"id":92118}
+[2024-01-01 00:36:17] production.INFO: Order created {"id":4149}
+[2024-01-01 00:37:21] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:37:40] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:37:43] production.INFO: Order created {"id":18748}
+[2024-01-01 00:37:49] production.ERROR: The password field is required.
+[2024-01-01 00:37:55] production.INFO: Order created {"id":77881}
+[2024-01-01 00:38:02] production.INFO: Order created {"id":48390}
+[2024-01-01 00:38:04] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:38:14] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:39:35] production.INFO: Order created {"id":83605}
+[2024-01-01 00:41:15] production.INFO: Order created {"id":56536}
+[2024-01-01 00:41:21] production.INFO: Order created {"id":43925}
+[2024-01-01 00:41:27] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:41:28] production.INFO: Order created {"id":89168}
+[2024-01-01 00:41:39] production.INFO: Order created {"id":64564}
+[2024-01-01 00:41:47] production.INFO: Order created {"id":37801}
+[2024-01-01 00:42:00] production.INFO: Order created {"id":75273}
+[2024-01-01 00:42:05] production.INFO: Order created {"id":3512}
+[2024-01-01 00:42:42] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:42:45] production.INFO: Order created {"id":18105}
+[2024-01-01 00:43:30] production.INFO: Order created {"id":50043}
+[2024-01-01 00:43:37] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:43:52] production.INFO: Order created {"id":51345}
+[2024-01-01 00:44:48] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:45:26] production.INFO: Order created {"id":58562}
+[2024-01-01 00:46:00] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:46:02] production.INFO: Order created {"id":7604}
+[2024-01-01 00:46:24] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:46:41] production.INFO: Order created {"id":58101}
+[2024-01-01 00:47:01] production.INFO: Order created {"id":28509}
+[2024-01-01 00:47:14] production.INFO: Order created {"id":52448}
+[2024-01-01 00:47:16] production.ERROR: The password field is required.
+[2024-01-01 00:47:28] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:47:38] production.INFO: Order created {"id":14092}
+[2024-01-01 00:47:47] production.INFO: Order created {"id":1338}
+[2024-01-01 00:48:01] production.INFO: Order created {"id":33543}
+[2024-01-01 00:48:05] production.ERROR: The password field is required.
+[2024-01-01 00:48:42] production.ERROR: CSRF token mismatch.
+[2024-01-01 00:49:02] production.INFO: Order created {"id":78644}
+[2024-01-01 00:49:10] production.INFO: Order created {"id":30730}
+[2024-01-01 00:49:12] production.INFO: Order created {"id":84874}
+[2024-01-01 00:49:22] production.INFO: Order created {"id":34327}
+[2024-01-01 00:50:08] production.INFO: Order created {"id":90456}
+[2024-01-01 00:50:37] production.INFO: Order created {"id":31981}
+[2024-01-01 00:50:48] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:51:33] production.INFO: Order created {"id":84797}
+[2024-01-01 00:52:05] production.INFO: Order created {"id":17934}
+[2024-01-01 00:52:19] production.ERROR: Undefined array key "name" {"exception":"[object] (ErrorException(code: 0))
+[stacktrace]
+#0 /var/www/app/Http/Controllers/OrderController.php(42): App\Http\Controllers\OrderController->show()
+#1 /var/www/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(54): call_user_func_array()
+#2 {main}
+"}
+[2024-01-01 00:52:32] production.INFO: Order created {"id":55537}
+[2024-01-01 00:52:34] production.INFO: Order created {"id":89688}
+[2024-01-01 00:52:41] production.INFO: Order created {"id":29515}
+[2024-01-01 00:52:46] production.INFO: Order created {"id":87344}
+[2024-01-01 00:52:59] production.INFO: Order created {"id":48569}
+[2024-01-01 00:53:05] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:53:09] production.INFO: Order created {"id":36782}
+[2024-01-01 00:53:21] production.INFO: Order created {"id":11352}
+[2024-01-01 00:53:29] production.INFO: Order created {"id":38882}
+[2024-01-01 00:53:34] production.ERROR: The password field is required.
+[2024-01-01 00:55:09] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:55:33] production.INFO: Order created {"id":81313}
+[2024-01-01 00:55:50] production.INFO: Order created {"id":96997}
+[2024-01-01 00:56:16] production.INFO: Order created {"id":40588}
+[2024-01-01 00:56:38] production.INFO: Order created {"id":37099}
+[2024-01-01 00:56:44] production.WARNING: Cache miss for key products:featured
+[2024-01-01 00:56:55] production.INFO: Order created {"id":71485}
+[2024-01-01 00:57:29] production.INFO: Order created {"id":12268}
+[2024-01-01 00:58:45] production.INFO: Order created {"id":30121}
+[2024-01-01 00:58:52] production.INFO: Order created {"id":11937}
+[2024-01-01 00:59:01] production.INFO: Order created {"id":89335}
+[2024-01-01 00:59:06] production.ERROR: The password field is required.
+[2024-01-01 00:59:49] production.INFO: Order created {"id":65208}
+[2024-01-01 01:00:09] production.INFO: Order created {"id":19544}
+[2024-01-01 01:00:24] production.INFO: Order created {"id":67456}
+[2024-01-01 01:00:35] production.INFO: Order created {"id":10473}
+[2024-01-01 01:01:18] production.INFO: Order created {"id":50788}
+[2024-01-01 01:01:21] production.INFO: Order created {"id":72436}
+[2024-01-01 01:01:33] production.INFO: Order created {"id":51280}
+[2024-01-01 01:01:40] production.INFO: Order created {"id":4195}
+[2024-01-01 01:01:50] production.INFO: Order created {"id":40100}
+[2024-01-01 01:02:14] production.INFO: Order created {"id":74263}
+[2024-01-01 01:03:59] production.INFO: Order created {"id":95056}
+[2024-01-01 01:04:18] production.WARNING: Cache miss for key products:featured
+[2024-01-01 01:04:26] production.INFO: Order created {"id":34308}
