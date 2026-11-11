@@ -526,8 +526,13 @@ def write_dataset(
     laravel_lines: int = 0,
     scenarios: Sequence[str] = (),
     seed: int = 7,
+    custom: Sequence[Scenario] = (),
 ) -> dict[str, Any]:
-    """Escreve access.log, auth.log, laravel.log e manifest.json (gabarito) em ``out``."""
+    """Escreve access.log, auth.log, laravel.log e manifest.json (gabarito) em ``out``.
+
+    ``custom``: cenários já montados (com seus próprios horários e IPs), somados aos de
+    ``scenarios``. Usado por ``realistic_day.py``.
+    """
     unknown = [s for s in scenarios if s not in SCENARIOS]
     if unknown:
         raise ValueError(f"cenário(s) desconhecido(s): {', '.join(unknown)}")
@@ -539,6 +544,7 @@ def write_dataset(
     for i, name in enumerate(scenarios):
         frac = 0.1 + 0.8 * (i + 1) / (len(scenarios) + 1)
         built.append(SCENARIOS[name](start + span * frac, Random(f"{seed}:{name}")))
+    built.extend(custom)
 
     def scen_lines(kind: str) -> list[Line]:
         return [ln for s in built for ln in getattr(s, kind)]
