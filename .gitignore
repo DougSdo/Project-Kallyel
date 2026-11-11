@@ -9,5 +9,11 @@ dist/
 .coverage
 htmlcov/
 *.log
+*.log.*
 !tests/data/**/*.log
 tests/data/generated/
+
+# Pastas onde ficam os logs analisados (podem ter IPs e dados pessoais reais): nunca versionar.
+/meus-logs/
+/logs/
+/logs-reais/
