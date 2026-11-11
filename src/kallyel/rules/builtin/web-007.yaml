@@ -1,0 +1,16 @@
+id: KALLYEL-WEB-007
+title: Enumeração de recursos por pico de respostas 404
+type: rate
+severity: medium
+phase: recon
+sources: [nginx, apache]
+attack: [T1595.003]
+cwe: []
+where:
+  http_status: [404]
+rate:
+  threshold: 30
+  window: 60s
+explain: "Um mesmo IP gerou 30 ou mais respostas 404 em até 60 segundos, padrão de varredura por lista de palavras (gobuster, ffuf e similares)."
+false_positives: "Páginas com muitos recursos quebrados (imagens, scripts) acessadas por um único usuário; robôs de indexação mal configurados; NAT corporativo com vários usuários atrás de um IP."
+mitigation: "Limitar taxa por IP (rate limiting, fail2ban); corrigir links quebrados para reduzir ruído; bloquear o IP se houver outros achados."

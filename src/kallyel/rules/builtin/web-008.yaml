@@ -1,0 +1,16 @@
+id: KALLYEL-WEB-008
+title: Muitas respostas 401/403 do mesmo IP
+type: rate
+severity: medium
+sources: [nginx, apache]
+attack: [T1110]
+cwe: [CWE-307]
+owasp: "A07:2021"
+where:
+  http_status: [401, 403]
+rate:
+  threshold: 15
+  window: 60s
+explain: "Um mesmo IP recebeu 15 ou mais respostas 401 ou 403 em até 60 segundos: tentativa de adivinhar credenciais ou de acessar áreas restritas."
+false_positives: "Aplicação cliente com token expirado repetindo requisições; scripts internos com credencial errada; NAT corporativo."
+mitigation: "Limitar tentativas por IP e por conta; bloqueio temporário progressivo; autenticação multifator; alertar o dono da integração se for um cliente legítimo."

@@ -1,0 +1,16 @@
+id: KALLYEL-AUTH-001
+title: Força bruta de SSH
+type: rate
+severity: high
+sources: [authlog]
+attack: [T1110]
+cwe: [CWE-307]
+owasp: "A07:2021"
+where:
+  action: [auth.failure]
+rate:
+  threshold: 5
+  window: 2m
+explain: "Um mesmo IP acumulou 5 ou mais falhas de autenticação SSH em até 2 minutos."
+false_positives: "Usuário legítimo que esqueceu a senha; automação com chave ou senha antiga; vários usuários atrás do mesmo NAT."
+mitigation: "Desabilitar senha e usar chaves; fail2ban ou limitação de taxa; restringir SSH por firewall/VPN; não expor SSH à internet quando possível."

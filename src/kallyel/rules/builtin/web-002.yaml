@@ -1,0 +1,17 @@
+id: KALLYEL-WEB-002
+title: Possível XSS refletido na requisição
+severity: medium
+sources: [nginx, apache]
+attack: [T1190]
+cwe: [CWE-79]
+owasp: "A03:2021"
+match:
+  field: http_path_query
+  any_regex:
+    - '(?i)<\s*(?:script|iframe|svg|object|embed)\b'
+    - '(?i)\bon(?:error|load|mouseover|focus|click)\s*='
+    - '(?i)javascript\s*:'
+    - '(?i)document\.(?:cookie|location)'
+explain: "Marcações HTML e manipuladores de evento enviados na URL, típicos de tentativas de XSS refletido."
+false_positives: "Sites de documentação ou fóruns técnicos em que o parâmetro carrega código; links de redirecionamento com 'javascript:' legítimo (raro)."
+mitigation: "Escapar a saída conforme o contexto; Content-Security-Policy; validar entrada; cookies com HttpOnly."

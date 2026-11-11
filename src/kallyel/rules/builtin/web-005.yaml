@@ -1,0 +1,14 @@
+id: KALLYEL-WEB-005
+title: User-Agent de ferramenta de varredura
+severity: medium
+phase: recon
+sources: [nginx, apache]
+attack: [T1595.002]
+cwe: []
+match:
+  field: user_agent
+  any_regex:
+    - '(?i)\b(?:sqlmap|nikto|nmap|gobuster|dirbuster|wfuzz|ffuf|feroxbuster|masscan|acunetix|nessus|openvas|wpscan|nuclei|zgrab)\b'
+explain: "O User-Agent se identifica como um scanner conhecido. Atacantes podem trocar o User-Agent, então a ausência deste achado não prova ausência de varredura."
+false_positives: "Testes de segurança autorizados ou monitoramento próprio da empresa."
+mitigation: "Bloquear ou limitar por IP/WAF; verificar se o alvo foi realmente explorado olhando os demais achados do mesmo IP."

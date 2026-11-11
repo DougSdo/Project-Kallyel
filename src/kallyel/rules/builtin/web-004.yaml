@@ -1,0 +1,22 @@
+id: KALLYEL-WEB-004
+title: Acesso a arquivo sensível ou de configuração
+severity: medium
+phase: recon
+sources: [nginx, apache]
+attack: [T1190, T1552.001]
+cwe: [CWE-538]
+owasp: "A05:2021"
+match:
+  field: http_path
+  any_regex:
+    - '(?i)(?:^|/)\.env(?:\.[\w-]+)?$'
+    - '(?i)(?:^|/)\.(?:git|svn|hg)(?:/|$)'
+    - '(?i)(?:^|/)wp-config\.(?:php|bak|old|txt|save|orig)(?:\.\w+|~)?$'
+    - '(?i)(?:^|/)(?:phpinfo|php_info)\.php$'
+    - '(?i)(?:^|/)\.(?:htpasswd|htaccess|ds_store)$'
+    - '(?i)(?:^|/)(?:backup|dump|database)\.(?:sql|zip|tar\.gz|tgz)$'
+    - '(?i)(?:^|/)id_[rd]sa(?:\.pub)?$'
+    - '(?i)/storage/logs/'
+explain: "Tentativa de ler arquivos que nunca deveriam ser públicos. A resposta 200 indica exposição real; 404 indica apenas sondagem (veja o status nas evidências)."
+false_positives: "Varreduras de segurança autorizadas; ferramentas internas de monitoramento."
+mitigation: "Manter segredos fora do diretório público; bloquear dotfiles no servidor web; remover phpinfo e backups; rotacionar qualquer credencial que tenha respondido 200."

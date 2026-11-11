@@ -1,0 +1,15 @@
+id: KALLYEL-WEB-009
+title: Pico de erros 500 provocados pelo mesmo IP
+type: rate
+severity: medium
+sources: [nginx, apache]
+attack: [T1190]
+cwe: []
+where:
+  http_status: [500]
+rate:
+  threshold: 10
+  window: 60s
+explain: "Um mesmo IP provocou 10 ou mais erros 500 em até 60 segundos. Fuzzing e tentativas de exploração costumam derrubar o código da aplicação em caminhos inesperados."
+false_positives: "Falha real da aplicação ou do banco de dados (vários IPs afetados ao mesmo tempo); testes de carga; clientes legítimos repetindo uma ação que falha."
+mitigation: "Verificar o log da aplicação no mesmo horário; corrigir o erro tratado de forma insegura; validar entradas; limitar taxa por IP."

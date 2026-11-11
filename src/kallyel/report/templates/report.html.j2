@@ -1,0 +1,185 @@
+{% macro finding(f) %}
+<div class="finding">
+  <div class="ip-head">
+    <h3><span class="badge sev-{{ f.severity }}">{{ f.severity_label }}</span> <code>{{ f.rule_id }}</code> {{ f.title }}</h3>
+  </div>
+  <dl>
+    <dt>Ocorrências</dt><dd>{{ f.count }}; de {{ time(f.first_seen) }} a {{ time(f.last_seen) }}; fase: {{ f.phase_label }}</dd>
+    {% if f.detail %}<dt>Critério</dt><dd>{{ f.detail }}</dd>{% endif %}
+    {% if f.attack or f.cwe or f.owasp %}
+    <dt>Mapeamento</dt><dd>{{ (f.attack + f.cwe + ([f.owasp] if f.owasp else [])) | join(", ") }}</dd>
+    {% endif %}
+    <dt>Motivo</dt><dd>{{ f.explain }}</dd>
+    <dt>Falsos positivos prováveis</dt><dd>{{ f.false_positives }}</dd>
+    <dt>Mitigação</dt><dd>{{ f.mitigation }}</dd>
+  </dl>
+  {% if f.evidence %}
+  <details>
+    <summary>Evidências ({{ f.evidence | length }} de {{ f.count }})</summary>
+    {% for e in f.evidence %}
+    <div><code>{{ e.source_file }}:{{ e.line_no }}</code> <span class="muted">{{ time(e.timestamp) }}</span></div>
+    <pre>{{ e.raw }}</pre>
+    {% endfor %}
+  </details>
+  {% endif %}
+</div>
+{% endmacro %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:">
+<meta name="referrer" content="no-referrer">
+<title>Kallyel: relatório de análise de logs</title>
+<style>
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --text: #1b1f24; --muted: #5b6573; --line: #d9dde3;
+  --low: #3a7d5c; --medium: #a36a00; --high: #c2410c; --critical: #b3261e;
+  --accent: #1f4e8c; --code-bg: #eef0f3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171b; --surface: #1c2025; --text: #e6e8eb; --muted: #9aa4b2; --line: #333a43;
+    --low: #5fbf8f; --medium: #e0a84a; --high: #f08a5d; --critical: #f2837c;
+    --accent: #8ab4f8; --code-bg: #262b32;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+h2 { font-size: 1.25rem; margin: 32px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+h3 { font-size: 1.05rem; margin: 0; }
+.sub { color: var(--muted); margin: 0 0 16px; }
+.notice { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+  padding: 10px 14px; border-radius: 6px; margin: 16px 0; }
+.notice.warn { border-left-color: var(--medium); }
+.notice.alert { border-left-color: var(--critical); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.card b { display: block; font-size: 1.4rem; }
+.card span { color: var(--muted); font-size: .85rem; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .8rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+.table-wrap { overflow-x: auto; }
+code, pre { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .85rem; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+pre { background: var(--code-bg); padding: 8px 10px; border-radius: 6px; overflow-x: auto;
+  white-space: pre-wrap; overflow-wrap: anywhere; margin: 4px 0 10px; }
+.ip { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 14px 0; }
+.ip-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: baseline; justify-content: space-between; }
+.badge { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: .78rem; font-weight: 600;
+  border: 1px solid currentColor; }
+.sev-low, .band-baixo { color: var(--low); } .sev-medium, .band-médio { color: var(--medium); }
+.sev-high, .band-alto { color: var(--high); } .sev-critical, .band-crítico { color: var(--critical); }
+.score { font-size: 1.1rem; font-weight: 700; }
+ul.comp { margin: 6px 0 12px; padding-left: 20px; }
+.finding { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 12px; }
+.finding dl { margin: 8px 0; display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; }
+.finding dt { color: var(--muted); }
+.finding dd { margin: 0; }
+details summary { cursor: pointer; color: var(--accent); }
+.muted { color: var(--muted); }
+footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Relatório de análise de logs</h1>
+<p class="sub">Kallyel: análise de logs para detecção de ataques web · versão {{ r.tool.version }} · gerado em {{ time(r.generated_at) }} UTC</p>
+
+<div class="notice"><strong>Aviso:</strong> {{ r.disclaimer }}</div>
+{% if not r.redacted %}
+<div class="notice alert"><strong>Atenção:</strong> o mascaramento de dados pessoais foi desligado (<code>--no-redact</code>). Trate este arquivo como dado sensível.</div>
+{% endif %}
+
+<h2>Resumo</h2>
+<div class="cards">
+  <div class="card"><b>{{ r.summary.findings }}</b><span>achados</span></div>
+  <div class="card"><b>{{ r.summary.ips_with_findings }}</b><span>IPs com achados</span></div>
+  <div class="card"><b>{{ r.summary.lines_read }}</b><span>linhas lidas em {{ r.summary.files }} arquivo(s)</span></div>
+  <div class="card"><b>{{ r.summary.lines_unparsed }}</b><span>linhas NÃO reconhecidas ({{ r.summary.lines_unparsed_percent }}%)</span></div>
+  <div class="card"><b>{{ r.summary.lines_truncated }}</b><span>linhas truncadas</span></div>
+  <div class="card"><b>{{ r.summary.events_ignored_ip }}</b><span>eventos de IPs ignorados</span></div>
+</div>
+
+{% for w in r.warnings %}
+<div class="notice warn"><strong>Aviso:</strong> {{ w }}</div>
+{% endfor %}
+
+{% if r.ips %}
+<h2>IPs por risco</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>#</th><th>IP</th><th>Risco</th><th>Fases</th><th>Regras</th><th>Período (UTC)</th></tr></thead>
+  <tbody>
+  {% for ip in r.ips %}
+  <tr>
+    <td>{{ loop.index }}</td>
+    <td><a href="#ip-{{ loop.index }}"><code>{{ ip.ip }}</code></a></td>
+    <td><span class="score band-{{ ip.score.band }}">{{ ip.score.total }}/100</span> <span class="muted">({{ ip.score.band }})</span></td>
+    <td>{% for p in ip.phases %}{{ p.label }}{% if not loop.last %} → {% endif %}{% endfor %}</td>
+    <td>{{ ip.rule_ids | length }}</td>
+    <td>{{ time(ip.first_seen) }} a {{ time(ip.last_seen) }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+
+{% for ip in r.ips %}
+<section class="ip" id="ip-{{ loop.index }}">
+  <div class="ip-head">
+    <h3>{{ loop.index }}. IP <code>{{ ip.ip }}</code></h3>
+    <span class="score band-{{ ip.score.band }}">Risco {{ ip.score.total }}/100 ({{ ip.score.band }})</span>
+  </div>
+  <p class="muted">Período {{ time(ip.first_seen) }} a {{ time(ip.last_seen) }} · duração {{ duration(ip.duration_seconds) }} · fases:
+    {% for p in ip.phases %}{{ p.label }}{% if not loop.last %} → {% endif %}{% else %}-{% endfor %}</p>
+  <strong>Como a pontuação foi calculada</strong>
+  <ul class="comp">
+    {% for c in ip.score.components %}
+    <li><b>+{{ c.points }}</b> {{ c.label }}: {{ c.detail }}</li>
+    {% endfor %}
+    {% if ip.score.capped %}<li>Soma {{ ip.score.raw }}, limitada a 100.</li>{% endif %}
+  </ul>
+
+  {% for f in r.findings if f.client_ip == ip.ip %}
+  {{ finding(f) }}
+  {% endfor %}
+</section>
+{% endfor %}
+{% endif %}
+
+{% set orphans = r.findings | selectattr("client_ip", "none") | list %}
+{% if orphans %}
+<h2>Achados sem IP associado</h2>
+<section class="ip">
+  {% for f in orphans %}{{ finding(f) }}{% endfor %}
+</section>
+{% endif %}
+
+{% if not r.findings %}
+<div class="notice">Nenhum achado. Isso não prova ausência de ataque: veja <em>o que o Kallyel não detecta</em> na documentação.</div>
+{% endif %}
+
+{% if r.unparsed_samples_shown %}
+<h2>Linhas não reconhecidas (amostras)</h2>
+{% for u in r.unparsed_samples %}
+<div><code>{{ u.source_file }}:{{ u.line_no }}</code></div>
+<pre>{{ u.raw }}</pre>
+{% else %}
+<p class="muted">Nenhuma.</p>
+{% endfor %}
+{% elif r.summary.lines_unparsed %}
+<p class="muted">Há linhas não reconhecidas; use <code>--show-unparsed</code> para ver amostras.</p>
+{% endif %}
+
+<footer>Relatório de arquivo único, sem scripts nem recursos externos. Triagem, não veredito.</footer>
+</main>
+</body>
+</html>

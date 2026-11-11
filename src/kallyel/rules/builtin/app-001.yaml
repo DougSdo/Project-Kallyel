@@ -1,0 +1,23 @@
+id: KALLYEL-APP-001
+title: Stack trace do Laravel com dado sensível no log
+severity: high
+phase: action
+sources: [laravel]
+attack: [T1552.001]
+cwe: [CWE-532, CWE-209]
+owasp: "A09:2021"
+where:
+  action: [app.error]
+match:
+  field: message
+  any_regex:
+    - "(?i)Access denied for user '[^']+'@'[^']+'"
+    - '(?i)\b(?:DB_PASSWORD|APP_KEY|MAIL_PASSWORD|AWS_SECRET_ACCESS_KEY|SECRET_KEY|API_KEY)\s*[=:]\s*\S+'
+    - 'base64:[A-Za-z0-9+/=]{40,}'
+    - '(?i)\b(?:password|passwd|secret|token|api_key|apikey)["'']?\s*(?:=>|[:=])\s*["'']?[^\s"'',)]{4,}'
+    - '(?i)\bBearer\s+[A-Za-z0-9._~+/=-]{20,}'
+    - '\bAKIA[0-9A-Z]{16}\b'
+    - '-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----'
+explain: "Um erro registrado pela aplicação contém credenciais, chaves ou tokens. O problema é de higiene do log: quem lê o log passa a ter o segredo."
+false_positives: "Valores de exemplo ou dados fictícios em ambientes de desenvolvimento; mensagens que citam o nome do campo e um valor curto não secreto."
+mitigation: "Rotacionar o segredo exposto; filtrar campos sensíveis antes de logar (dontFlash, reportable/context); não registrar variáveis de ambiente nem parâmetros de conexão; restringir acesso ao log."

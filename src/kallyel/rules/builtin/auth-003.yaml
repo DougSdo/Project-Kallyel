@@ -1,0 +1,20 @@
+id: KALLYEL-AUTH-003
+title: Novo usuário local ou uso incomum de sudo
+severity: medium
+phase: action
+sources: [authlog]
+attack: [T1136.001, T1548.003]
+cwe: [CWE-269]
+where:
+  action: [user.created, sudo.command]
+match:
+  field: message
+  any_regex:
+    - '(?i)^new user\b'
+    - '(?:^|/)(?:ba|z|da|k)?sh(?:\s|$)'
+    - '(?i)(?:^|/)(?:su|visudo|passwd|useradd|usermod|adduser|chpasswd)(?:\s|$)'
+    - '(?i)/etc/(?:sudoers|shadow|passwd)\b'
+    - '(?i)(?:^|/)(?:nc|ncat|socat)\s'
+explain: "Criação de conta local, ou comando sudo que abre um shell, altera contas ou edita sudoers. É uma heurística por lista de comandos, não por comparação com o comportamento habitual do administrador."
+false_positives: "Administradores que usam 'sudo -i' ou 'sudo bash' no dia a dia; criação planejada de contas."
+mitigation: "Confirmar com o administrador se a ação era esperada; restringir sudo a comandos específicos; auditar contas novas; registrar comandos com auditd."

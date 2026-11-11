@@ -1,0 +1,21 @@
+id: KALLYEL-AUTH-002
+title: Força bruta seguida de login com sucesso
+type: sequence
+severity: critical
+phase: success
+sources: [authlog]
+attack: [T1110, T1078]
+cwe: [CWE-307]
+owasp: "A07:2021"
+window: 15m
+steps:
+  - name: falhas de autenticação
+    where:
+      action: [auth.failure]
+    min_count: 5
+  - name: login com sucesso
+    where:
+      action: [auth.success]
+explain: "O mesmo IP errou a autenticação 5 ou mais vezes e, em seguida, conseguiu entrar, dentro de 15 minutos. Indica que a senha pode ter sido adivinhada."
+false_positives: "Usuário legítimo que errou a senha várias vezes e depois acertou."
+mitigation: "Tratar a conta como comprometida até prova em contrário: trocar credenciais, revisar a sessão aberta e os comandos executados, invalidar chaves e sessões, ativar autenticação multifator."

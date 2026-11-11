@@ -1,0 +1,19 @@
+id: KALLYEL-WEB-003
+title: Possível path traversal ou inclusão de arquivo local (LFI)
+severity: high
+sources: [nginx, apache]
+attack: [T1190, T1083]
+cwe: [CWE-22]
+owasp: "A01:2021"
+match:
+  field: http_path_query
+  any_regex:
+    - '\.\.[/\\]'
+    - '(?i)\.\.%c0%af'
+    - '(?i)/etc/(?:passwd|shadow)\b'
+    - '(?i)\b(?:boot|win)\.ini\b'
+    - '(?i)\b(?:php|phar|expect|data|file|zip)://'
+    - '(?i)/proc/self/(?:environ|cmdline)'
+explain: "Sequências '../' (inclusive codificadas) e referências a arquivos do sistema ou a wrappers de stream do PHP."
+false_positives: "Páginas de documentação cujo caminho cita arquivos como /etc/passwd; clientes que enviam caminhos relativos sem normalizar."
+mitigation: "Não montar caminhos de arquivo com entrada do usuário; lista de permissões; resolver e validar o caminho final; desabilitar wrappers PHP desnecessários."

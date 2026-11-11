@@ -1,0 +1,19 @@
+id: KALLYEL-WEB-006
+title: Possível injeção de comando ou execução remota de código
+severity: critical
+sources: [nginx, apache]
+attack: [T1190, T1059]
+cwe: [CWE-78, CWE-94]
+owasp: "A03:2021"
+match:
+  field: http_path_query
+  any_regex:
+    - '(?i)(?:;|\||&&|`|\$\()\s*(?:cat|ls|id|whoami|uname|wget|curl|nc|ncat|bash|sh|powershell|cmd)(?![\w=.-])'
+    - '(?i)\$\{(?:jndi|env|sys|lower|upper):'
+    - '(?i)/bin/(?:ba)?sh\b'
+    - '(?i)\bcmd(?:\.exe)?\s*/c\b'
+    - '(?i)\b(?:eval|system|passthru|shell_exec|exec|popen|proc_open)\s*\('
+    - '(?i)base64_decode\s*\('
+explain: "Metacaracteres de shell seguidos de comandos comuns, expressões de log4shell, chamadas de execução do PHP e shells na URL."
+false_positives: "Buscas ou fóruns técnicos que citem comandos; parâmetros que usam '|' ou ';' como separador seguido de um nome de comando."
+mitigation: "Nunca passar entrada do usuário a shell ou eval; usar APIs sem shell; atualizar bibliotecas vulneráveis (ex.: Log4j); WAF; isolar o processo com privilégios mínimos."

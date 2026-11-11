@@ -1,0 +1,19 @@
+id: KALLYEL-WEB-001
+title: Possível SQL Injection na requisição
+severity: high
+sources: [nginx, apache]
+attack: [T1190]
+cwe: [CWE-89]
+owasp: "A03:2021"
+match:
+  field: http_path_query
+  any_regex:
+    - '(?i)union(\s|\+|%20)+(all(\s|\+|%20)+)?select'
+    - "(?i)'(\\s|%20)*or(\\s|%20)*'?1'?="
+    - '(?i)sleep\(\d+\)'
+    - '(?i)pg_sleep\('
+    - '(?i)waitfor\s+delay'
+    - '(?i)information_schema'
+explain: "Padrões típicos de SQLi na URL: UNION SELECT, condição sempre verdadeira, funções de atraso e consulta ao catálogo do banco."
+false_positives: "Aplicações que aceitam SQL ou texto técnico em buscas; documentação sobre bancos de dados."
+mitigation: "Consultas parametrizadas; WAF; validação de entrada; usuário do banco com privilégios mínimos."
